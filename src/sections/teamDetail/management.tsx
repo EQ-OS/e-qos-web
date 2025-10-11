@@ -31,39 +31,39 @@ const directionGeneraleData: TeamDetailData = {
   members: [
     {
       id: 1,
-      name: 'Amadou Diallo',
+      name: 'FOFANA Ayouba',
       position: 'CEO & Fondateur',
-      bio: 'Visionnaire passionné par l\'innovation énergétique en Afrique. Plus de 15 ans d\'expérience dans le secteur des énergies renouvelables.',
+      bio: 'Visionnaire passionné par l\'innovation énergétique en Afrique. Plus de 3 ans d\'expérience dans le secteur aeronautique.',
       photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'amadou.diallo@deqos.com'
+      email: 'ayouba.fofana@e-qos.com'
     },
     {
       id: 2,
-      name: 'Fatou Ndiaye',
-      position: 'Directrice des Opérations',
-      bio: 'Experte en gestion opérationnelle avec un parcours international. Spécialisée dans l\'optimisation des processus et la scalabilité.',
+      name: 'Souleymane Faya Leno',
+      position: 'CTO Backend Engineer & Co-Fondateur',
+      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact en Afrique.',
       photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'fatou.ndiaye@deqos.com'
+      email: 'souleymane.leno@e-qos.com'
     },
     {
       id: 3,
-      name: 'Kofi Mensah',
-      position: 'Directeur Financier',
-      bio: 'Expert financier avec une solide expérience dans les startups tech africaines. Spécialiste en levée de fonds et stratégie financière.',
+      name: 'Diadié Traoré',
+      position: 'Lead Developer Backend',
+      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques.',
       photo: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'kofi.mensah@deqos.com'
+      email: 'diadie.traore@e-qos.com'
     },
     {
       id: 4,
-      name: 'Aïcha Traoré',
-      position: 'Directrice Stratégie & Développement',
-      bio: 'Stratège visionnaire ayant piloté plusieurs projets d\'expansion à travers l\'Afrique de l\'Ouest. Experte en partenariats stratégiques.',
+      name: 'Souleymane Kodjo',
+      position: 'Lead Developper Frontend',
+      bio: 'Stratège visionnaire ayant piloté plusieurs projets d\'expansion à travers l\'Afrique de l\'Ouest. Experte en fullstack',
       photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'aicha.traore@deqos.com'
+      email: 'souleymane.kodjo@e-qos.com'
     }
   ]
 };

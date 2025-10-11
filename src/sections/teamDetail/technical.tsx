@@ -28,50 +28,33 @@ const equipeTechniqueData: TeamDetailData = {
   mission: 'Nous développons des technologies de pointe pour démocratiser l\'accès à l\'énergie propre en Afrique. Notre expertise couvre le développement logiciel, l\'IoT, l\'intelligence artificielle et les systèmes embarqués pour créer des solutions durables et scalables.',
   heroImage: '/images/teams/technique-hero.jpg',
   members: [
+    
     {
       id: 1,
-      name: 'Youssef Benali',
-      position: 'CTO & Lead Architect',
-      bio: 'Architecte logiciel avec 12 ans d\'expérience. Expert en systèmes distribués et architecture cloud pour applications à grande échelle.',
-      photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop',
+      name: 'Souleymane Faya Leno',
+      position: 'CTO Backend Engineer & Co-Fondateur',
+      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact en Afrique.',
+      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'youssef.benali@deqos.com'
+      email: 'souleymane.leno@e-qos.com'
     },
     {
       id: 2,
-      name: 'Nadia Okonkwo',
-      position: 'Lead Developer Mobile',
-      bio: 'Développeuse mobile passionnée, spécialisée en React Native et Flutter. A développé plus de 20 applications à fort impact.',
-      photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+      name: 'Diadié Traoré',
+      position: 'Lead Developer Backend',
+      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques.',
+      photo: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'nadia.okonkwo@deqos.com'
+      email: 'diadie.traore@e-qos.com'
     },
     {
       id: 3,
-      name: 'Kwame Asante',
-      position: 'Lead Backend Engineer',
-      bio: 'Expert en développement backend et microservices. Spécialiste Node.js, Python et bases de données distribuées.',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+      name: 'Souleymane Kodjo',
+      position: 'Lead Developper Frontend',
+      bio: 'Stratège visionnaire ayant piloté plusieurs projets d\'expansion à travers l\'Afrique de l\'Ouest. Experte en fullstack',
+      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
       linkedin: '#',
-      email: 'kwame.asante@deqos.com'
-    },
-    {
-      id: 4,
-      name: 'Amina Diop',
-      position: 'Lead Frontend Engineer',
-      bio: 'Développeuse frontend créative avec un œil pour le design. Experte en React, TypeScript et animations web modernes.',
-      photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'amina.diop@deqos.com'
-    },
-    {
-      id: 5,
-      name: 'Chioma Okafor',
-      position: 'Junior Developer',
-      bio: 'Jeune développeuse talentueuse passionnée par l\'innovation. En formation continue sur les dernières technologies.',
-      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'chioma.okafor@deqos.com'
+      email: 'souleymane.kodjo@e-qos.com'
     }
   ]
 };
