@@ -51,32 +51,62 @@ export const teamData: TeamMember[] = [
 export const partnersData: Partner[] = [
   { 
     id: 1, 
-    name: 'Orange', 
-    logo: '/images/partners/orange-money.jpg' 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
   },
   { 
     id: 2, 
-    name: 'MTN', 
-    logo: '/images/partners/mtn-mobile-money.jpg' 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
   },
   { 
     id: 3, 
-    name: 'Rio Tinto', 
-    logo: '/images/partners/rio-tinto.png' 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
   },
   { 
     id: 4, 
-    name: 'Simandou 2024', 
-    logo: '/images/partners/simandou.png' 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
   },
   { 
     id: 5, 
-    name: 'Guicopres', 
-    logo: '/images/partners/guicopres.png' 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
   },
   { 
     id: 6, 
-    name: 'Ecobank', 
-    logo: '/images/partners/ecobank.png' 
-  }
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 7, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 8, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 9, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 10, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 11, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
+  { 
+    id: 12, 
+    name: 'Partners Group', 
+    logo: '/images/partners/partners-logo.jpg' 
+  },
 ];

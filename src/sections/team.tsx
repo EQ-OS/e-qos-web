@@ -23,6 +23,17 @@ const TeamCard: React.FC<{
   index: number;
 }> = ({ member, index }) => {
   const ref = useScrollAnimation();
+  
+  const imageNames = [
+        'equipe-direction-generale-bg.jpg',
+        'equipe-technique-bg.jpg',
+        'equipe-marketing-bg.jpg',
+        'equipe-support-bg.jpg',
+
+      ];
+
+  const imageIndex = index % imageNames.length;
+  const imageSrc = `/images/e-qos-pruducts/${imageNames[imageIndex]}`;
 
   return (
     <div ref={ref} className={styles.teamCard}>
@@ -30,7 +41,7 @@ const TeamCard: React.FC<{
         <img 
           loading="lazy" 
           alt={member.role} 
-          src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=1080&fit=max"
+          src={imageSrc}
         />
       </div>
       <div className={styles.roleLabel}>Membre de l'équipe</div>

@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
           className={styles.heroImage}
           loading="eager"
           alt="Transformation digitale en Afrique"
-          src="https://images.unsplash.com/photo-1417325384643-aac51acc9e5d?q=75&fm=jpg&w=1920&fit=max"
+          src="/images/e-qos-pruducts/mascot.jpg"
         />
       </div>
 

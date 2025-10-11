@@ -12,6 +12,13 @@ const Applications: React.FC = () => {
     }
   };
 
+  // Définition des images spécifiques pour chaque application
+  const appImages = {
+    wali: '/images/e-qos-pruducts/wali-background.jpg',
+    wandi: '/images/e-qos-pruducts/wandi-background.jpg', 
+    makiti: '/images/e-qos-pruducts/makiti-background.jpg'
+  };
+
   return (
     <section id="applications" className={styles.applicationsSection}>
       <div className="container">
@@ -26,7 +33,8 @@ const Applications: React.FC = () => {
             <ApplicationCard 
               key={app.id} 
               app={app} 
-              index={index} 
+              index={index}
+              imageUrl={appImages[app.name.toLowerCase() as keyof typeof appImages]}
               onContactClick={handleScrollTo} 
             />
           ))}
@@ -39,8 +47,9 @@ const Applications: React.FC = () => {
 const ApplicationCard: React.FC<{ 
   app: { id: number; name: string; tag: string; slogan: string; features: string[] }; 
   index: number;
+  imageUrl: string;
   onContactClick: (id: string) => void;
-}> = ({ app, index, onContactClick }) => {
+}> = ({ app, index, imageUrl, onContactClick }) => {
   const ref = useScrollAnimation();
 
   return (
@@ -48,7 +57,8 @@ const ApplicationCard: React.FC<{
       <img 
         loading="lazy" 
         alt={app.name} 
-        src="/images/e-qos-pruducts/background-2.jpg"
+        src={imageUrl}
+        className={styles.cardImage}
       />
       <div className={styles.cardBody}>
         <span className={styles.tag}>{app.tag}</span>
