@@ -1,50 +1,297 @@
+/* team.module.css - Style d-eqos */
+.teamSection {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  padding: 5rem 0;
+}
+
+.teamSection::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatSlow 20s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, 30px) rotate(5deg); }
+}
+
+.teamSection h2 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #1e464a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.center.muted {
+  color: #64748b;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 1;
 }
 
 .teamCard {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  transition: transform 0.2s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(30, 70, 74, 0.08);
+  box-shadow: 
+    0 8px 30px rgba(30, 70, 74, 0.06),
+    0 0 0 1px rgba(30, 70, 74, 0.04);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.teamCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1e464a 0%, #6366f1 50%, #8b5cf6 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .teamCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 60px rgba(30, 70, 74, 0.12),
+    0 0 0 1px rgba(30, 70, 74, 0.08);
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+.teamCard:hover::before {
+  transform: scaleX(1);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
 }
 
 .teamCard img {
   width: 100%;
-  height: 160px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 0.6rem;
+  transition: transform 0.4s ease;
 }
 
-.teamCard h4 {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-  color: var(--dark);
+.teamCard:hover img {
+  transform: scale(1.05);
 }
 
-.teamCard p {
-  color: var(--muted);
-  font-size: 0.9rem;
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.teamCard:hover .imageOverlay {
+  opacity: 1;
+}
+
+.cardBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(30, 70, 74, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+  color: #1e464a;
+  font-weight: 700;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  width: max-content;
+  border: 1px solid rgba(30, 70, 74, 0.1);
+  backdrop-filter: blur(10px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.teamCard h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e464a;
   margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.teamSize {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(30, 70, 74, 0.1);
+}
+
+.teamSize::before {
+  content: '👥';
+  font-size: 1.1rem;
+}
+
+.viewButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: #1e464a;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(30, 70, 74, 0.2);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  justify-content: center;
+}
+
+.viewButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.viewButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 70, 74, 0.3);
+  background: #16383c;
+}
+
+.viewButton:hover::before {
+  left: 100%;
+}
+
+.viewButton:active {
+  transform: translateY(0);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.teamCard:hover .arrow {
+  transform: translateX(4px);
 }
 
 @media (max-width: 1024px) {
+  .teamSection {
+    padding: 4rem 0;
+  }
+
   .teamGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .imageWrapper {
+    height: 220px;
+  }
+
+  .cardBody {
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 640px) {
+  .teamSection {
+    padding: 3rem 0;
+  }
+
+  .teamSection h2 {
+    font-size: 1.75rem;
+  }
+
+  .center.muted {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
   .teamGrid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .teamCard {
+    border-radius: 16px;
+  }
+
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .cardBody {
+    padding: 1.5rem;
+  }
+
+  .teamCard h3 {
+    font-size: 1.25rem;
+  }
+
+  .viewButton {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
   }
 }
