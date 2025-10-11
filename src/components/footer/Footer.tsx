@@ -37,9 +37,9 @@ const Footer: React.FC = () => {
           <div>
             <h4>Réseaux</h4>
             <ul>
-              <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
-              <li><a href="#" aria-label="Twitter">Twitter</a></li>
-              <li><a href="#" aria-label="Instagram">Instagram</a></li>
+              <li><a href="#!" aria-label="LinkedIn">LinkedIn</a></li>
+              <li><a href="#!" aria-label="Twitter">Twitter</a></li>
+              <li><a href="#!" aria-label="Instagram">Instagram</a></li>
             </ul>
           </div>
         </div>
