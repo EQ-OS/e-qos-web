@@ -1,0 +1,132 @@
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  backdrop-filter: blur(6px);
+  background: #1e464a !important; /* Couleur appliquée */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.siteHeader.scrolled {
+  background: #1e464a !important; /* Même couleur au scroll */
+  backdrop-filter: blur(12px);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+}
+
+.brand {
+  font-weight: 700;
+  color: white !important; /* Texte blanc pour contraster */
+  text-decoration: none;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+/* Desktop nav */
+.mainNav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mainNav a {
+  text-decoration: none;
+  color: white !important; /* Texte blanc */
+  font-weight: 600;
+  padding: 0.5rem 0.4rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mainNav a:hover,
+.mainNav a:focus {
+  color: var(--accent) !important; /* Accent orange au hover */
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile toggle */
+.mobileToggle {
+  display: none;
+  width: 42px;
+  height: 38px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mobileToggle span {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background: white !important; /* Lignes blanches */
+  margin: 2px 0;
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.mobileToggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobileToggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileToggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 1024px) {
+  .mobileToggle {
+    display: flex;
+  }
+
+  .mainNav {
+    display: none;
+  }
+
+  .mainNav.open {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 64px;
+    background: #1e464a !important; /* Même couleur pour le menu mobile */
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mainNav.open ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mainNav.open a {
+    display: block;
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  .headerInner {
+    padding: 0.6rem 0;
+  }
+}

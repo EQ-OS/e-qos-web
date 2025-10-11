@@ -1,0 +1,198 @@
+.partnersSection {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnersSection::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse 10s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.partnersSection h2 {
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 700;
+  color: #1e464a;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.partnersSection .center.muted {
+  color: #64748b;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto 3.5rem;
+  line-height: 1.7;
+}
+
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+.partnerCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  box-shadow: 
+    0 8px 30px rgba(30, 70, 74, 0.06),
+    0 0 0 1px rgba(30, 70, 74, 0.04);
+  border: 1px solid rgba(30, 70, 74, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.partnerCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1e464a 0%, #6366f1 50%, #8b5cf6 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partnerCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 16px 48px rgba(30, 70, 74, 0.12),
+    0 0 0 1px rgba(30, 70, 74, 0.08);
+  border-color: rgba(99, 102, 241, 0.15);
+}
+
+.partnerCard:hover::before {
+  transform: scaleX(1);
+}
+
+.logoContainer {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+  border-radius: 10px;
+  padding: 0.75rem;
+  border: 1px solid rgba(30, 70, 74, 0.06);
+  transition: all 0.3s ease;
+}
+
+.partnerCard:hover .logoContainer {
+  background: white;
+  border-color: rgba(99, 102, 241, 0.15);
+  transform: scale(1.05);
+}
+
+.logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: all 0.4s ease;
+}
+
+.partnerCard:hover .logo {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.partnerCard h4 {
+  margin: 0;
+  color: #1e464a;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+.partnerCard:hover h4 {
+  color: #6366f1;
+}
+
+@media (max-width: 768px) {
+  .partnersSection {
+    padding: 3rem 0;
+  }
+
+  .partnersGrid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.15rem;
+    margin-top: 2rem;
+  }
+
+  .partnerCard {
+    padding: 0.6rem 0.4rem;
+    border-radius: 8px;
+    gap: 0.75rem;
+  }
+
+  .logoContainer {
+    width: 60px;
+    height: 45px;
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+
+  .partnerCard h4 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .partnersSection h2 {
+    font-size: 1.75rem;
+  }
+
+  .partnersSection .center.muted {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .partnersGrid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+  
+  .partnerCard {
+    padding: 1rem 0.5rem;
+  }
+  
+  .logoContainer {
+    width: 50px;
+    height: 40px;
+  }
+}

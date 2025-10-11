@@ -1,0 +1,14 @@
+:root {
+  --brand: #0d9488;
+  --accent: #f59e0b;
+  --dark: #0f172a;
+  --muted: #6b7280;
+  --bg: #fbfdff;
+  --card: #ffffff;
+  --header-footer: #1e464a; /* Variable pour référence */
+  --glass: rgba(255,255,255,0.6);
+  --radius: 12px;
+  --container: 1200px;
+  --gap: 1.25rem;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}

@@ -1,0 +1,210 @@
+.aboutSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutSection::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(30, 70, 74, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatSlow 25s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(40px, -40px) rotate(5deg); }
+}
+
+.sectionGrid {
+  display: block;
+  width: 100%;
+}
+
+.mainCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 
+    0 20px 60px rgba(30, 70, 74, 0.08),
+    0 0 0 1px rgba(30, 70, 74, 0.05);
+  border: 1px solid rgba(30, 70, 74, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mainCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #1e464a 0%, #6366f1 50%, #8b5cf6 100%);
+}
+
+.mainCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 30px 80px rgba(30, 70, 74, 0.12),
+    0 0 0 1px rgba(30, 70, 74, 0.08);
+}
+
+.mainCard h2 {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1e464a;
+  position: relative;
+}
+
+.accent {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.mainCard p {
+  color: #475569;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.mainCard p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.highlight {
+  color: #1e464a;
+  font-weight: 600;
+  position: relative;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: #1e464a;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(30, 70, 74, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 70, 74, 0.3);
+  background: #16383c;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.statsGrid {
+  display: none;
+}
+
+.statCard {
+  display: none;
+}
+
+.statNumber {
+  display: none;
+}
+
+.statLabel {
+  display: none;
+}
+
+.statDescription {
+  display: none;
+}
+
+.iconWrapper {
+  display: none;
+}
+
+.statCard:hover .iconWrapper {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sectionGrid {
+    max-width: 100%;
+  }
+
+  .mainCard {
+    padding: 2.5rem;
+  }
+
+  .mainCard h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainCard {
+    padding: 2rem;
+  }
+
+  .mainCard h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .mainCard p {
+    font-size: 1rem;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .statCard {
+    padding: 1.5rem;
+  }
+
+  .ctaButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
