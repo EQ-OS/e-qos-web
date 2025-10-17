@@ -1,5 +1,6 @@
 // applications.tsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { applicationsData } from '../data/fakeData';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import styles from '../styles/applications.module.css';
@@ -19,13 +20,20 @@ const Applications: React.FC = () => {
     makiti: '/images/e-qos-pruducts/makiti-background.jpg'
   };
 
+  // Définition des routes pour chaque application
+  const appRoutes = {
+    wali: '/app/wali',
+    wandi: '/app/wandi',
+    makiti: '/app/makiti'
+  };
+
   return (
     <section id="applications" className={styles.applicationsSection}>
       <div className="container">
         <h2 className={styles.center}>Nos Solutions Digitales</h2>
         <p className={`${styles.center} ${styles.muted}`}>
           Trois applications innovantes conçues pour résoudre les défis concrets 
-          de l'Afrique moderne — emploi, mobilité et alimentation.
+          de l'Afrique moderne – emploi, mobilité et alimentation.
         </p>
 
         <div className={styles.cardsGrid}>
@@ -35,6 +43,7 @@ const Applications: React.FC = () => {
               app={app} 
               index={index}
               imageUrl={appImages[app.name.toLowerCase() as keyof typeof appImages]}
+              appRoute={appRoutes[app.name.toLowerCase() as keyof typeof appRoutes]}
               onContactClick={handleScrollTo} 
             />
           ))}
@@ -48,8 +57,9 @@ const ApplicationCard: React.FC<{
   app: { id: number; name: string; tag: string; slogan: string; features: string[] }; 
   index: number;
   imageUrl: string;
+  appRoute: string;
   onContactClick: (id: string) => void;
-}> = ({ app, index, imageUrl, onContactClick }) => {
+}> = ({ app, index, imageUrl, appRoute, onContactClick }) => {
   const ref = useScrollAnimation();
 
   return (
@@ -69,13 +79,13 @@ const ApplicationCard: React.FC<{
             <li key={i}>{feature}</li>
           ))}
         </ul>
-        <button 
+        <Link 
+          to={appRoute}
           className={styles.ctaButton}
-          onClick={() => onContactClick('#contact')}
         >
           Découvrir {app.name}
           <span>→</span>
-        </button>
+        </Link>
       </div>
     </article>
   );

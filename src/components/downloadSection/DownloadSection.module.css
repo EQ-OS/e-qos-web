@@ -1,0 +1,506 @@
+/* DownloadSection.module.css */
+
+.downloadSection {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.downloadSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatSlow 20s ease-in-out infinite;
+}
+
+.downloadSection::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  animation: floatSlowReverse 25s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-30px, 30px) rotate(-5deg); }
+}
+
+@keyframes floatSlowReverse {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, -30px) rotate(5deg); }
+}
+
+@keyframes phoneFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes iconPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(52, 168, 83, 0); }
+}
+
+@keyframes iconPulseApple {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+}
+
+.downloadContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.downloadBadge {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50px;
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.downloadHeader h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: #1e464a;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.downloadHeader p {
+  color: #64748b;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.downloadGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+/* Phone Mock */
+.phoneMock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phoneFrame {
+  position: relative;
+  width: 280px;
+  height: 560px;
+  background: linear-gradient(135deg, #1e464a 0%, #2d5559 100%);
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 
+    0 30px 80px rgba(30, 70, 74, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  animation: phoneFloat 3s ease-in-out infinite;
+}
+
+.phoneNotch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 28px;
+  background: #1a1a1a;
+  border-radius: 0 0 20px 20px;
+  z-index: 10;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+  border-radius: 36px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.phoneEmoji {
+  font-size: 4rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.phoneName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e464a;
+  letter-spacing: -0.01em;
+}
+
+.phoneGloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 40px;
+  pointer-events: none;
+}
+
+/* Download Buttons */
+.downloadButtonsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.4rem 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+  border: 2px solid rgba(30, 70, 74, 0.08);
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 40px rgba(30, 70, 74, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.downloadButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.downloadButton:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(30, 70, 74, 0.15);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.downloadButton:hover::before {
+  left: 100%;
+}
+
+.downloadButton:active {
+  transform: translateY(-4px);
+}
+
+.storeIcon {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.playStoreButton .storeIcon {
+  background: linear-gradient(135deg, rgba(52, 168, 83, 0.1) 0%, rgba(52, 168, 83, 0.05) 100%);
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+.playStoreButton:hover .storeIcon {
+  background: linear-gradient(135deg, rgba(52, 168, 83, 0.2) 0%, rgba(52, 168, 83, 0.1) 100%);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.appStoreButton .storeIcon {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.04) 100%);
+  animation: iconPulseApple 2s ease-in-out infinite;
+}
+
+.appStoreButton:hover .storeIcon {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.08) 100%);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.iconSvg {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.buttonContent {
+  flex: 1;
+  text-align: left;
+}
+
+.storeLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.buttonText {
+  display: block;
+  font-size: 1.25rem;
+  color: #1e464a;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.downloadArrow {
+  font-size: 1.5rem;
+  color: #6366f1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.downloadButton:hover .downloadArrow {
+  transform: translateX(6px) translateY(-2px);
+  color: #4f46e5;
+}
+
+/* QR Code Section */
+.qrSection {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(30, 70, 74, 0.08);
+}
+
+.qrLabel {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.qrCode {
+  width: 140px;
+  height: 140px;
+  background: white;
+  border: 2px solid rgba(30, 70, 74, 0.1);
+  border-radius: 16px;
+  padding: 12px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(30, 70, 74, 0.12);
+  transition: all 0.3s ease;
+}
+
+.qrCode:hover {
+  box-shadow: 0 12px 48px rgba(30, 70, 74, 0.18);
+  transform: translateY(-4px);
+}
+
+.qrCode svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .downloadSection {
+    padding: 5rem 0;
+  }
+
+  .downloadGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .phoneMock {
+    order: -1;
+  }
+
+  .phoneFrame {
+    width: 240px;
+    height: 480px;
+  }
+
+  .downloadButtonsWrapper {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .downloadSection {
+    padding: 4rem 0;
+  }
+
+  .downloadHeader h2 {
+    font-size: 2rem;
+  }
+
+  .downloadHeader p {
+    font-size: 1rem;
+  }
+
+  .downloadGrid {
+    gap: 2rem;
+  }
+
+  .downloadButton {
+    padding: 1.2rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .storeIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .iconSvg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .buttonText {
+    font-size: 1.1rem;
+  }
+
+  .phoneFrame {
+    width: 200px;
+    height: 400px;
+  }
+
+  .phoneEmoji {
+    font-size: 3rem;
+  }
+
+  .phoneName {
+    font-size: 1.25rem;
+  }
+
+  .qrCode {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .downloadSection {
+    padding: 3rem 0;
+  }
+
+  .downloadHeader {
+    margin-bottom: 3rem;
+  }
+
+  .downloadHeader h2 {
+    font-size: 1.5rem;
+  }
+
+  .downloadHeader p {
+    font-size: 0.95rem;
+  }
+
+  .downloadBadge {
+    font-size: 0.75rem;
+    padding: 0.5rem 1.25rem;
+  }
+
+  .downloadGrid {
+    gap: 1.5rem;
+  }
+
+  .downloadButton {
+    padding: 1rem 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .storeIcon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .iconSvg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .storeLabel {
+    font-size: 0.7rem;
+  }
+
+  .buttonText {
+    font-size: 1rem;
+  }
+
+  .downloadArrow {
+    font-size: 1.25rem;
+  }
+
+  .phoneFrame {
+    width: 180px;
+    height: 360px;
+  }
+
+  .phoneEmoji {
+    font-size: 2.5rem;
+  }
+
+  .phoneName {
+    font-size: 1rem;
+  }
+
+  .qrSection {
+    padding-top: 2rem;
+  }
+
+  .qrLabel {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .qrCode {
+    width: 100px;
+    height: 100px;
+  }
+}

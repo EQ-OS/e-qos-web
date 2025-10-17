@@ -15,6 +15,9 @@ import Management from './sections/teamDetail/management';
 import Technical from './sections/teamDetail/technical';
 import Marketing from './sections/teamDetail/marketing';
 import Support from './sections/teamDetail/support';
+import WaliApp from './sections/appDetail/waliApp';
+import WandiApp from './sections/appDetail/wandiApp';
+import MakitiApp from './sections/appDetail/makitiApp';
 
 import './styles/globals.css';
 
@@ -41,21 +44,21 @@ const HomePage: React.FC<{ isMenuOpen: boolean; setIsMenuOpen: (open: boolean) =
   );
 };
 
-// Composant de page générique réutilisable pour toutes les équipes
-const TeamDetailPage: React.FC<{ 
+// Composant de page générique réutilisable pour les équipes et applications
+const DetailPage: React.FC<{ 
   isMenuOpen: boolean; 
   setIsMenuOpen: (open: boolean) => void;
-  TeamComponent: React.ComponentType;
+  Component: React.ComponentType;
 }> = ({ 
   isMenuOpen, 
   setIsMenuOpen,
-  TeamComponent
+  Component
 }) => {
   return (
     <>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <main>
-        <TeamComponent />
+        <Component />
       </main>
       <Footer />
     </>
@@ -81,14 +84,14 @@ function App() {
             element={<HomePage isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />} 
           />
           
-          {/* Pages de détail des équipes - version réutilisable */}
+          {/* === Pages de détail des équipes === */}
           <Route 
             path="/equipe/direction-generale" 
             element={
-              <TeamDetailPage 
+              <DetailPage 
                 isMenuOpen={isMenuOpen} 
                 setIsMenuOpen={setIsMenuOpen}
-                TeamComponent={Management}
+                Component={Management}
               />
             } 
           />
@@ -96,10 +99,10 @@ function App() {
           <Route 
             path="/equipe/technique" 
             element={
-              <TeamDetailPage 
+              <DetailPage 
                 isMenuOpen={isMenuOpen} 
                 setIsMenuOpen={setIsMenuOpen}
-                TeamComponent={Technical}
+                Component={Technical}
               />
             } 
           />
@@ -107,10 +110,10 @@ function App() {
           <Route 
             path="/equipe/marketing" 
             element={
-              <TeamDetailPage 
+              <DetailPage 
                 isMenuOpen={isMenuOpen} 
                 setIsMenuOpen={setIsMenuOpen}
-                TeamComponent={Marketing}
+                Component={Marketing}
               />
             } 
           />
@@ -118,25 +121,47 @@ function App() {
           <Route 
             path="/equipe/support" 
             element={
-              <TeamDetailPage 
+              <DetailPage 
                 isMenuOpen={isMenuOpen} 
                 setIsMenuOpen={setIsMenuOpen}
-                TeamComponent={Support}
+                Component={Support}
               />
             } 
           />
-          
-          {/* Vous pouvez facilement ajouter d'autres équipes plus tard */}
-          {/* <Route 
-            path="/equipe/marketing" 
+
+          {/* === Pages de détail des applications === */}
+          <Route 
+            path="/app/wali" 
             element={
-              <TeamDetailPage 
+              <DetailPage 
                 isMenuOpen={isMenuOpen} 
                 setIsMenuOpen={setIsMenuOpen}
-                TeamComponent={Marketing}
+                Component={WaliApp}
               />
             } 
-          /> */}
+          />
+
+          <Route 
+            path="/app/wandi" 
+            element={
+              <DetailPage 
+                isMenuOpen={isMenuOpen} 
+                setIsMenuOpen={setIsMenuOpen}
+                Component={WandiApp}
+              />
+            } 
+          />
+
+          <Route 
+            path="/app/makiti" 
+            element={
+              <DetailPage 
+                isMenuOpen={isMenuOpen} 
+                setIsMenuOpen={setIsMenuOpen}
+                Component={MakitiApp}
+              />
+            } 
+          />
         </Routes>
       </div>
     </Router>
