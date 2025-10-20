@@ -31,8 +31,9 @@ const Contact: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   // Configuration de l'API
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-  const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
+  //const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://e-qos-web-backend.onrender.com';
+const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
 
   // Gérer l'affichage de la popup de confirmation
   const [showPopup, setShowPopup] = useState(false);

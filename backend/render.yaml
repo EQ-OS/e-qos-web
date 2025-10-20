@@ -1,0 +1,36 @@
+# render.yaml
+services:
+  - type: web
+    name: e-qos-backend
+    env: node
+    plan: free
+    region: frankfurt  # ou ohio, oregon, etc.
+    buildCommand: npm run render-build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: FRONTEND_URL
+        value: http://localhost:3000  # URL frontend
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        value: contact.eqos@gmail.com
+      - key: SMTP_PASSWORD
+        fromSecret: true  # À définir dans le dashboard Render
+      - key: SMTP_FROM_EMAIL
+        value: contact.eqos@gmail.com
+      - key: CONTACT_EMAIL
+        value: contact.admin@e-qos.com
+      - key: CONTACT_FORM_SECRET
+        fromSecret: true  # À définir dans le dashboard Render
+      - key: HMAC_SECRET
+        fromSecret: true  # À définir dans le dashboard Render
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000  # 15 minutes
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: 5  # 5 requêtes par fenêtre

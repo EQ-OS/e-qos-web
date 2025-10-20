@@ -3,10 +3,16 @@ import express, { Express, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import contactRouter from './routes/contact';
 import { errorHandler } from './middleware/errorHandler';
+import dotenv from 'dotenv';
 
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+
+// Charger les variables d'environnement
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 // Middleware - CORS
 app.use(cors({
