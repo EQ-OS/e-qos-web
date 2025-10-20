@@ -53,7 +53,7 @@ const directionGeneraleData: TeamDetailData = {
       position: 'Lead Developer Backend',
       bio: 'Expert en développement backend avec une passion pour les architectures évolutives et les technologies émergentes. Contribue activement à la construction de solutions robustes et performantes pour notre plateforme.',
       photo: '/images/e-qos-pruducts/diadie.jpeg',
-      linkedin: '#',
+      linkedin: 'https://www.linkedin.com/in/diadi%C3%A9-traor%C3%A9-b7278a18a/',
       email: 'diadie.traore@e-qos.com'
     },
     {
