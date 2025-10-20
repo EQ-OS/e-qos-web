@@ -33,27 +33,27 @@ const equipeTechniqueData: TeamDetailData = {
       id: 1,
       name: 'Souleymane Faya Leno',
       position: 'CTO Backend Engineer & Co-Fondateur',
-      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact en Afrique.',
-      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
-      linkedin: '#',
+      bio: 'Leader opérationnel avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact en Afrique et possède une solide expérience dans le développement backend et l\'architecture de systèmes complexes.',
+      photo: '/images/e-qos-pruducts/leno.jpeg',
+      linkedin: 'https://www.linkedin.com/in/souleymane-faya-leno-5b74a3171/',
       email: 'souleymane.leno@e-qos.com'
     },
     {
       id: 2,
       name: 'Diadié Traoré',
       position: 'Lead Developer Backend',
-      bio: 'Leader opérationnelle avec une expertise en gestion de projets technologiques.',
-      photo: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=400&h=400&fit=crop',
+      bio: 'Expert en développement backend avec une passion pour les architectures évolutives et les technologies émergentes. Contribue activement à la construction de solutions robustes et performantes pour notre plateforme.',
+      photo: '/images/e-qos-pruducts/diadie.jpeg',
       linkedin: '#',
       email: 'diadie.traore@e-qos.com'
     },
     {
       id: 3,
       name: 'Souleymane Kodjo',
-      position: 'Lead Developper Frontend',
-      bio: 'Stratège visionnaire ayant piloté plusieurs projets d\'expansion à travers l\'Afrique de l\'Ouest. Experte en fullstack',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
-      linkedin: '#',
+      position: 'Lead Developer Frontend',
+      bio: 'Ingénieur Logiciel et Cloud DevOps, spécialisé en Java/Spring Boot et architectures microservices sur AWS Cloud. Intervient sur la conception, la sécurisation et le déploiement automatisé d\'applications modernes avec Docker, Kubernetes et CI/CD. Expérience couvrant également la FinTech et la Blockchain, avec le développement de solutions de paiement digital et d\'intégration KYC/AML. Combine rigueur technique, automatisation et innovation continue pour garantir performance et fiabilité des systèmes.',
+      photo: '/images/e-qos-pruducts/kodjo.jpg',
+      linkedin: 'https://www.linkedin.com/in/souleymanekodjo/',
       email: 'souleymane.kodjo@e-qos.com'
     }
   ]

@@ -29,3 +29,31 @@ export interface Stat {
   number: number | string;
   label: string;
 }
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactFormState {
+  name: string;
+  email: string;
+  subject: string;
+  customSubject: string;
+  message: string;
+}
+
+export interface ApiResponse {
+  success?: boolean;
+  error?: string;
+  message?: string;
+  timestamp?: string;
+  details?: string[];
+}
+
+export interface EncryptedPayload {
+  encrypted: string;
+  signature: string;
+}

@@ -65,7 +65,7 @@
   z-index: 1;
 }
 
-/* Styles pour le formulaire (inchangés) */
+/* Styles pour le formulaire */
 .formCard {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
   backdrop-filter: blur(20px);
@@ -76,6 +76,8 @@
     0 0 0 1px rgba(30, 70, 74, 0.05);
   border: 1px solid rgba(30, 70, 74, 0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; 
+  overflow: hidden;
 }
 
 .formCard:hover {
@@ -475,6 +477,176 @@
   line-height: 1.4;
 }
 
+/* Styles pour le pop-up de confirmation - Superposition sur toute la page */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 70, 74, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+  padding: 1rem;
+}
+
+.popupContainer {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popupCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.99) 100%);
+  backdrop-filter: blur(20px);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 40px 120px rgba(30, 70, 74, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 0 2px rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  text-align: center;
+  position: relative;
+  animation: slideUpScale 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.popupClose {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(30, 70, 74, 0.08);
+  border: 1px solid rgba(30, 70, 74, 0.15);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #64748b;
+}
+
+.popupClose:hover {
+  background: rgba(30, 70, 74, 0.15);
+  border-color: rgba(30, 70, 74, 0.25);
+  transform: rotate(90deg);
+  color: #1e464a;
+}
+
+.popupIcon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: bounceIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popupContent {
+  margin-bottom: 2rem;
+}
+
+.popupContent h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e464a;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.popupContent p {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.popupButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1e464a 0%, #16383c 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(30, 70, 74, 0.2);
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.popupButton:hover {
+  background: linear-gradient(135deg, #16383c 0%, #1e464a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(30, 70, 74, 0.3);
+}
+
+.popupButton:active {
+  transform: translateY(0);
+}
+
+/* Animations pour le pop-up */
+@keyframes slideUpScale {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Media Queries */
 @media (max-width: 1024px) {
   .contactGrid {
     grid-template-columns: 1fr;
@@ -531,6 +703,32 @@
   .investmentNote {
     padding: 1.25rem;
   }
+
+  /* Responsive pour le pop-up */
+  .popupCard {
+    padding: 2.5rem 2rem;
+    max-width: 350px;
+  }
+  
+  .popupIcon {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .popupContent h3 {
+    font-size: 1.35rem;
+  }
+  
+  .popupContent p {
+    font-size: 0.95rem;
+  }
+  
+  .popupClose {
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -577,5 +775,27 @@
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
+  }
+
+  /* Responsive pour le pop-up sur mobile */
+  .popupCard {
+    padding: 2rem 1.5rem;
+    max-width: 300px;
+  }
+  
+  .popupIcon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .popupContent h3 {
+    font-size: 1.25rem;
+  }
+  
+  .popupButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    max-width: 160px;
   }
 }
