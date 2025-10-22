@@ -7,8 +7,11 @@ import { sanitize } from 'isomorphic-dompurify';
 
 const router: Router = express.Router();
 
-// SUPPRIMER cette ligne :
-// const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialiser Resend
+if (!process.env.RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY is not defined in environment variables');
+}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Interface pour les données de contact
 interface ContactData {
@@ -102,9 +105,6 @@ async function sendSecureEmail(
   encryptedPayload: string,
   clientIP: string | undefined
 ) {
-  // ✅ INITIALISER RESEND ICI
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
   // Construire le HTML de l'email
   const htmlContent = `
     <!DOCTYPE html>
