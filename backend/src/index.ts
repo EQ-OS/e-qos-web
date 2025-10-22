@@ -14,6 +14,14 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 
+// ✅ AJOUT: Diagnostic des variables d'environnement
+console.log('=== ENV VARIABLES LOADED ===');
+console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? '***' + process.env.RESEND_API_KEY.slice(-8) : 'MISSING');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('PORT:', process.env.PORT);
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+console.log('============================');
+
 // Middleware - CORS
 app.use(cors({
   origin: FRONTEND_URL,
@@ -46,24 +54,73 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
   next();
 });
 
+// ===== ROUTES =====
+
+// Route racine - Page d'accueil de l'API
+app.get('/', (_req: Request, res: Response) => {
+  res.status(200).json({
+    message: '🚀 API E-QOS Backend - Service Opérationnel',
+    version: '1.0.0',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    endpoints: {
+      health: '/health',
+      contact: '/api/contact/send',
+      documentation: '/docs'
+    },
+    status: 'active'
+  });
+});
+
+// Documentation de l'API
+app.get('/docs', (_req: Request, res: Response) => {
+  res.status(200).json({
+    name: 'E-QOS Backend API',
+    description: 'Backend sécurisé pour la plateforme digitale E-QOS',
+    version: '1.0.0',
+    documentation: {
+      'GET /': 'Page d\'accueil de l\'API',
+      'GET /health': 'Health check du serveur',
+      'GET /docs': 'Documentation de l\'API',
+      'GET /api/contact/health': 'Health check du service contact',
+      'POST /api/contact/send': 'Envoyer un message de contact sécurisé'
+    },
+    security: {
+      encryption: 'AES-256-GCM + HMAC-SHA256',
+      rate_limiting: 'Activé',
+      sanitization: 'DOMPurify',
+      cors: 'Configuré'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    uptime: process.uptime()
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
 // API Routes
 app.use('/api/contact', contactRouter);
 
-// 404 handler
+// 404 handler (doit être après toutes les routes)
 app.use((req: Request, res: Response) => {
   res.status(404).json({
     error: 'Endpoint non trouvé',
     path: req.path,
-    method: req.method
+    method: req.method,
+    available_endpoints: [
+      'GET /',
+      'GET /health',
+      'GET /docs',
+      'GET /api/contact/health',
+      'POST /api/contact/send'
+    ],
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -76,9 +133,9 @@ app.listen(PORT, () => {
 ╔════════════════════════════════════════╗
 ║  E-QOS Backend Sécurisé Démarré        ║
 ╠════════════════════════════════════════╣
-║  Port: ${PORT}                              ║
-║  Frontend: ${FRONTEND_URL}        ║
-║  Environnement: ${process.env.NODE_ENV || 'development'}          ║
+║  Port: ${PORT}${' '.repeat(31 - PORT.toString().length)}║
+║  Frontend: ${FRONTEND_URL}${' '.repeat(26 - FRONTEND_URL.length)}║
+║  Environnement: ${process.env.NODE_ENV || 'development'}${' '.repeat(16 - (process.env.NODE_ENV || 'development').length)}║
 ╚════════════════════════════════════════╝
   `);
 });

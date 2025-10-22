@@ -1,11 +1,14 @@
 // backend/src/routes/contact.ts
 import express, { Router, Request, Response, NextFunction } from 'express';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import { EncryptionService } from '../lib/encryption.utils';
 import { rateLimitMiddleware } from '../middleware/rateLimit';
 import { sanitize } from 'isomorphic-dompurify';
 
 const router: Router = express.Router();
+
+// SUPPRIMER cette ligne :
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Interface pour les données de contact
 interface ContactData {
@@ -92,25 +95,15 @@ function sanitizeData(data: ContactData): ContactData {
 }
 
 /**
- * Envoyer l'email sécurisé
+ * Envoyer l'email sécurisé avec Resend
  */
 async function sendSecureEmail(
   cleanData: ContactData,
   encryptedPayload: string,
   clientIP: string | undefined
 ) {
-  const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: 'contact.eqos@gmail.com',
-    pass: 'zbmrtygigchmwbsj'  
-  }
-});
-
-  // Vérifier la connexion
-  await transporter.verify();
+  // ✅ INITIALISER RESEND ICI
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   // Construire le HTML de l'email
   const htmlContent = `
@@ -182,12 +175,10 @@ async function sendSecureEmail(
     </html>
   `;
 
-  const mailOptions = {
-    from: {
-      name: 'E-QOS Contact Sécurisé',
-      address: process.env.SMTP_FROM_EMAIL || 'noreply@e-qos.com'
-    },
-    to: process.env.CONTACT_EMAIL || 'contact.admin@e-qos.com',
+  // Envoyer avec Resend
+  const { data, error } = await resend.emails.send({
+    from: `E-QOS Contact <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
+    to: process.env.CONTACT_EMAIL || 'contact.eqos@gmail.com',
     replyTo: cleanData.email,
     subject: `[🔒 SÉCURISÉ] E-QOS: ${cleanData.subject}`,
     html: htmlContent,
@@ -209,20 +200,13 @@ ${encryptedPayload}
 ---
 Cet email a été généré automatiquement depuis le formulaire de contact sécurisé d'E-QOS.
     `.trim()
-  };
-
-  // Envoyer avec timeout
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      reject(new Error('Timeout d\'envoi email (15s)'));
-    }, 15000);
-
-    transporter.sendMail(mailOptions, (err, info) => {
-      clearTimeout(timeout);
-      if (err) reject(err);
-      else resolve(info);
-    });
   });
+
+  if (error) {
+    throw new Error(`Erreur Resend: ${error.message}`);
+  }
+
+  return data;
 }
 
 /**
