@@ -204,8 +204,8 @@ function generateEmailTemplate(
         }
         
         .message-content {
-          background: #f9fafb;
-          border: 1px solid #e5e7eb;
+          background: #ffffff;
+          border: 2px solid #1e464a;
           border-radius: 6px;
           padding: 20px;
           font-size: 14px;
@@ -215,53 +215,29 @@ function generateEmailTemplate(
           word-wrap: break-word;
         }
         
-        .button-container {
-          text-align: center;
-          margin: 35px 0;
-        }
-        
-        .button {
-          display: inline-block;
-          background-color: #1e464a;
-          color: #ffffff;
-          text-decoration: none;
-          padding: 12px 32px;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 600;
-          transition: background-color 0.2s;
-        }
-        
-        .button:hover {
-          background-color: #2d5559;
-        }
-        
         .footer {
-          background: #f9fafb;
-          padding: 30px 40px;
+          background: linear-gradient(135deg, #1e464a 0%, #2d5559 100%);
+          padding: 25px 40px;
           text-align: center;
-          border-top: 1px solid #e5e7eb;
         }
         
         .footer-text {
           font-size: 13px;
-          color: #6b7280;
+          color: #ffffff;
           line-height: 1.6;
           margin: 5px 0;
         }
         
         .footer-link {
-          color: #1e464a;
+          color: #ffffff;
           text-decoration: none;
           font-weight: 500;
         }
         
         .footer-meta {
-          font-size: 12px;
-          color: #9ca3af;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px solid #e5e7eb;
+          font-size: 11px;
+          color: #a0e4e8;
+          margin-top: 12px;
         }
         
         @media only screen and (max-width: 600px) {
@@ -322,28 +298,15 @@ function generateEmailTemplate(
             <div class="message-content">${cleanData.message}</div>
           </div>
           
-          <div class="button-container">
-            <a href="mailto:${cleanData.email}?subject=Re: ${encodeURIComponent(cleanData.subject)}" class="button">
-              Répondre
-            </a>
-          </div>
-          
         </div>
         
         <div class="footer">
           <p class="footer-text">
-            <strong>E-QOS</strong> – Révolution Digitale pour l'Afrique
+            <strong>E-QOS</strong> · Révolution Digitale pour l'Afrique
           </p>
-          <p class="footer-text">
-            Wali · Wandi · Makiti
-          </p>
-          <p class="footer-text" style="margin-top: 15px;">
+          <p class="footer-meta">
             <a href="https://www.e-qos.com" class="footer-link">www.e-qos.com</a>
           </p>
-          
-          <div class="footer-meta">
-            Cet email a été généré automatiquement. Ne pas répondre à cette adresse.
-          </div>
         </div>
         
       </div>

@@ -40,11 +40,11 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
 
   const subjectOptions = [
     { value: '', label: 'Sélectionnez un sujet' },
-    { value: 'partenariat', label: 'Proposition de partenariat' },
-    { value: 'recrutement', label: 'Opportunité de recrutement' },
-    { value: 'information', label: 'Demande d\'information' },
-    { value: 'investissement', label: 'Opportunité d\'investissement' },
-    { value: 'autre', label: 'Autre sujet' }
+    { value: 'Partenariat', label: 'Proposition de partenariat' },
+    { value: 'Recrutement', label: 'Opportunité de recrutement' },
+    { value: 'Information', label: 'Demande d\'information' },
+    { value: 'Investissement', label: 'Opportunité d\'investissement' },
+    { value: 'Autre', label: 'Autre sujet' }
   ];
 
   const businessFeatures = [
