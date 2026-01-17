@@ -7,7 +7,15 @@ import dotenv from 'dotenv';
 
 const app: Express = express();
 const PORT = process.env.PORT || 5000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+
+const allowedOrigins = [
+  'https://e-qos.netlify.app',           // Production Netlify
+  'https://e-qos.com',   // Production custom domain
+  'https://www.e-qos.com/', // Production custom domain www
+  'http://localhost:3000',               // Développement
+  'http://localhost:5173',               // Vite dev server
+  'https://e-qos-web-backend.onrender.com' // Backend lui-même
+];
 
 // Charger les variables d'environnement
 if (process.env.NODE_ENV !== 'production') {
@@ -23,11 +31,12 @@ console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
 console.log('============================');
 
 // Middleware - CORS
+
 app.use(cors({
-  origin: FRONTEND_URL,
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Accept']
 }));
 
 // Middleware - JSON parsing
@@ -130,13 +139,19 @@ app.use(errorHandler);
 // Démarrer le serveur
 app.listen(PORT, () => {
   console.log(`
-╔════════════════════════════════════════╗
-║  E-QOS Backend Sécurisé Démarré        ║
-╠════════════════════════════════════════╣
-║  Port: ${PORT}${' '.repeat(31 - PORT.toString().length)}║
-║  Frontend: ${FRONTEND_URL}${' '.repeat(26 - FRONTEND_URL.length)}║
-║  Environnement: ${process.env.NODE_ENV || 'development'}${' '.repeat(16 - (process.env.NODE_ENV || 'development').length)}║
-╚════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════╗
+║               E-QOS Backend Sécurisé Démarré        ║
+╠══════════════════════════════════════════════════════╣
+║  Port: ${PORT}${' '.repeat(43 - PORT.toString().length)}║
+║  Environnement: ${process.env.NODE_ENV || 'development'}${' '.repeat(28 - (process.env.NODE_ENV || 'development').length)}║
+║  CORS: ${allowedOrigins.length} origines autorisées${' '.repeat(28 - allowedOrigins.length.toString().length)}║
+║                                                      ║
+║  Frontends autorisés:                                ║
+║  • https://e-qos.netlify.app                         ║
+║  • http://e-qos.com                                  ║
+║  • https://www.e-qos.com/                            ║
+║  • +${allowedOrigins.length - 2} autres environnements║
+╚══════════════════════════════════════════════════════╝
   `);
 });
 
