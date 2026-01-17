@@ -98,12 +98,10 @@ function sanitizeData(data: ContactData): ContactData {
 }
 
 /**
- * Générer le template HTML d'email professionnel
- * À ajouter dans votre fichier contact.ts
+ * Template Email E-QOS - Design Minimaliste et Professionnel
  */
 function generateEmailTemplate(
   cleanData: ContactData,
-  encryptedPayload: string,
   clientIP: string | undefined
 ): string {
   return `
@@ -117,416 +115,234 @@ function generateEmailTemplate(
         body { 
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
           line-height: 1.6;
-          color: #2d3748;
-          background: linear-gradient(135deg, #1a3d41 0%, #1e464a 50%, #234a4f 100%);
-          padding: 30px 20px;
+          color: #374151;
+          background-color: #f3f4f6;
+          padding: 40px 20px;
         }
-        .email-wrapper {
-          max-width: 700px;
+        
+        .email-container {
+          max-width: 600px;
           margin: 0 auto;
           background: #ffffff;
-          border-radius: 16px;
+          border-radius: 8px;
           overflow: hidden;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
         }
         
-        /* Header avec dégradé E-QOS */
         .header {
-          background: linear-gradient(135deg, #1e464a 0%, #2d5559 50%, #3a6166 100%);
-          padding: 50px 40px;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-        
-        /* Effet de réseau neuronal en arrière-plan */
-        .header::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-image: 
-            radial-gradient(circle at 20% 30%, rgba(96, 255, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(96, 255, 255, 0.08) 0%, transparent 50%);
-          pointer-events: none;
-        }
-        
-        .logo-container {
-          margin-bottom: 25px;
-          position: relative;
-          z-index: 1;
-        }
-        .logo {
-          max-width: 200px;
-          height: auto;
-          filter: brightness(1.1);
-        }
-        
-        .header h1 {
-          color: #ffffff;
-          font-size: 28px;
-          font-weight: 700;
-          margin-bottom: 10px;
-          position: relative;
-          z-index: 1;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        .header .subtitle {
-          color: #a0e4e8;
-          font-size: 15px;
-          font-weight: 400;
-          font-style: italic;
-          margin-bottom: 20px;
-          position: relative;
-          z-index: 1;
-        }
-        
-        /* Badge de notification avec accent cyan */
-        .notification-badge {
-          display: inline-block;
-          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-          color: white;
-          padding: 10px 20px;
-          border-radius: 25px;
-          font-size: 12px;
-          font-weight: 700;
-          margin-top: 15px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-          position: relative;
-          z-index: 1;
-        }
-        
-        /* Contenu principal */
-        .content {
-          padding: 45px 40px;
           background: #ffffff;
+          padding: 40px 40px 30px 40px;
+          text-align: center;
+          border-top: 4px solid #1e464a;
         }
         
-        .section-title {
-          color: #1e464a;
-          font-size: 20px;
-          font-weight: 700;
-          margin-bottom: 20px;
-          padding-bottom: 12px;
-          border-bottom: 3px solid #1e464a;
-          display: flex;
-          align-items: center;
-          gap: 10px;
+        .logo {
+          max-width: 180px;
+          height: auto;
+          margin-bottom: 5px;
         }
         
-        /* Carte d'informations avec accent E-QOS */
-        .info-card {
-          background: linear-gradient(135deg, #f8feff 0%, #f0f9fa 100%);
-          border: 2px solid #d1eaed;
-          border-radius: 12px;
-          padding: 25px;
-          margin-bottom: 30px;
-          box-shadow: 0 2px 8px rgba(30, 70, 74, 0.08);
+        .content {
+          padding: 0 40px 40px 40px;
         }
-        .info-row {
-          display: flex;
-          padding: 12px 0;
-          border-bottom: 1px solid #d1eaed;
-          align-items: flex-start;
+        
+        .title {
+          font-size: 24px;
+          font-weight: 600;
+          color: #1f2937;
+          margin: 30px 0 10px 0;
+          text-align: center;
         }
-        .info-row:last-child {
+        
+        .subtitle {
+          font-size: 15px;
+          color: #6b7280;
+          text-align: center;
+          margin-bottom: 35px;
+        }
+        
+        .info-table {
+          width: 100%;
+          margin: 25px 0;
+          border-collapse: collapse;
+        }
+        
+        .info-table tr {
+          border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .info-table tr:last-child {
           border-bottom: none;
         }
-        .info-label {
-          font-weight: 700;
-          color: #1e464a;
-          min-width: 140px;
+        
+        .info-table td {
+          padding: 14px 0;
           font-size: 14px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        .info-value {
-          color: #2d5559;
-          font-size: 14px;
-          word-break: break-word;
-          flex: 1;
         }
         
-        /* Zone de message professionnelle */
-        .message-container {
+        .info-table td:first-child {
+          font-weight: 600;
+          color: #1e464a;
+          width: 120px;
+          vertical-align: top;
+        }
+        
+        .info-table td:last-child {
+          color: #4b5563;
+        }
+        
+        .message-section {
           margin: 30px 0;
         }
-        .message-box {
-          background: #ffffff;
-          border: 2px solid #1e464a;
-          border-radius: 10px;
-          padding: 30px;
-          font-size: 15px;
-          line-height: 1.9;
-          color: #2d3748;
+        
+        .message-label {
+          font-weight: 600;
+          color: #1e464a;
+          font-size: 14px;
+          margin-bottom: 12px;
+          display: block;
+        }
+        
+        .message-content {
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
+          border-radius: 6px;
+          padding: 20px;
+          font-size: 14px;
+          line-height: 1.7;
+          color: #374151;
           white-space: pre-wrap;
           word-wrap: break-word;
-          min-height: 120px;
-          box-shadow: 0 4px 12px rgba(30, 70, 74, 0.1);
         }
         
-        /* Notice de sécurité avec accent vert */
-        .security-notice {
-          background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-          border-left: 5px solid #10b981;
-          padding: 20px 25px;
-          border-radius: 8px;
-          margin: 25px 0;
-          box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
-        }
-        .security-notice-title {
-          color: #059669;
-          font-weight: 700;
-          font-size: 15px;
-          margin-bottom: 8px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-        }
-        .security-notice-text {
-          color: #047857;
-          font-size: 13px;
-          line-height: 1.6;
-        }
-        
-        /* Payload chiffré */
-        .encrypted-payload {
-          background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-          border-left: 5px solid #f59e0b;
-          padding: 20px 25px;
-          border-radius: 8px;
-          margin: 25px 0;
-          box-shadow: 0 2px 8px rgba(245, 158, 11, 0.15);
-        }
-        .encrypted-payload-title {
-          color: #d97706;
-          font-weight: 700;
-          font-size: 14px;
-          margin-bottom: 12px;
-        }
-        .payload-preview {
-          background: rgba(245, 158, 11, 0.1);
-          padding: 15px;
-          border-radius: 6px;
-          font-family: 'Courier New', monospace;
-          font-size: 11px;
-          color: #92400e;
-          word-break: break-all;
-          border: 1px dashed #f59e0b;
-        }
-        
-        /* Bouton d'action avec couleurs E-QOS */
-        .action-button {
-          display: inline-block;
-          background: linear-gradient(135deg, #1e464a 0%, #2d5559 100%);
-          color: white;
-          padding: 15px 35px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: 700;
-          font-size: 15px;
-          margin: 25px 0;
-          box-shadow: 0 4px 12px rgba(30, 70, 74, 0.3);
-          transition: transform 0.2s;
-        }
-        .action-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(30, 70, 74, 0.4);
-        }
-        
-        /* Footer avec dégradé E-QOS */
-        .footer {
-          background: linear-gradient(135deg, #1e464a 0%, #2d5559 100%);
-          padding: 35px 40px;
+        .button-container {
           text-align: center;
-          border-top: 3px solid #3a6166;
+          margin: 35px 0;
         }
-        .footer-title {
+        
+        .button {
+          display: inline-block;
+          background-color: #1e464a;
           color: #ffffff;
-          font-weight: 700;
-          font-size: 16px;
-          margin-bottom: 12px;
-        }
-        .footer-tagline {
-          color: #a0e4e8;
-          font-size: 14px;
-          font-style: italic;
-          margin-bottom: 15px;
-        }
-        .footer-text {
-          color: #d1eaed;
-          font-size: 13px;
-          line-height: 1.6;
-          margin: 8px 0;
-        }
-        .footer-warning {
-          color: #fca5a5;
-          font-size: 13px;
-          font-weight: 600;
-          margin-top: 20px;
-          padding: 12px;
-          background: rgba(239, 68, 68, 0.1);
+          text-decoration: none;
+          padding: 12px 32px;
           border-radius: 6px;
+          font-size: 14px;
+          font-weight: 600;
+          transition: background-color 0.2s;
         }
-        .footer-website {
+        
+        .button:hover {
+          background-color: #2d5559;
+        }
+        
+        .footer {
+          background: #f9fafb;
+          padding: 30px 40px;
+          text-align: center;
+          border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer-text {
+          font-size: 13px;
+          color: #6b7280;
+          line-height: 1.6;
+          margin: 5px 0;
+        }
+        
+        .footer-link {
+          color: #1e464a;
+          text-decoration: none;
+          font-weight: 500;
+        }
+        
+        .footer-meta {
+          font-size: 12px;
+          color: #9ca3af;
           margin-top: 20px;
           padding-top: 20px;
-          border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .footer-link {
-          color: #60ffff;
-          text-decoration: none;
-          font-weight: 600;
-          font-size: 14px;
+          border-top: 1px solid #e5e7eb;
         }
         
-        /* Responsive */
         @media only screen and (max-width: 600px) {
-          body { padding: 15px 10px; }
-          .content { padding: 30px 25px; }
-          .header { padding: 35px 25px; }
-          .footer { padding: 25px 20px; }
-          .info-row { 
-            flex-direction: column; 
-            gap: 5px;
-          }
-          .info-label { 
-            margin-bottom: 5px;
-            min-width: auto;
-          }
-          .message-box { padding: 20px; }
-          .logo { max-width: 160px; }
+          body { padding: 20px 10px; }
+          .header { padding: 30px 25px 20px 25px; }
+          .content { padding: 0 25px 30px 25px; }
+          .footer { padding: 25px 25px; }
+          .logo { max-width: 140px; }
+          .title { font-size: 20px; }
+          .info-table td:first-child { width: 100px; }
         }
       </style>
     </head>
     <body>
-      <div class="email-wrapper">
+      <div class="email-container">
         
-        <!-- Header avec identité E-QOS -->
         <div class="header">
-          <div class="logo-container">
-            <!-- URL de votre logo - à héberger sur e-qos.com/logo-email.png -->
-            <img src="https://e-qos.com/logo-email.png" alt="E-QOS Logo" class="logo">
-          </div>
-          <h1>📬 Nouveau Message de Contact</h1>
-          <p class="subtitle">Révolution Digitale pour l'Afrique</p>
-          <span class="notification-badge">🔒 Message Sécurisé</span>
+          <img src="https://e-qos.com/logo_eqos.png" alt="E-QOS" class="logo">
         </div>
         
-        <!-- Contenu principal -->
         <div class="content">
           
-          <!-- Informations du contact -->
-          <h2 class="section-title">
-            <span>📋</span> Informations du Contact
-          </h2>
-          <div class="info-card">
-            <div class="info-row">
-              <span class="info-label">
-                <span>👤</span> Nom complet
-              </span>
-              <span class="info-value">${cleanData.name}</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">
-                <span>📧</span> Email
-              </span>
-              <span class="info-value">
-                <a href="mailto:${cleanData.email}" style="color: #1e464a; font-weight: 600; text-decoration: none;">
-                  ${cleanData.email}
-                </a>
-              </span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">
-                <span>📝</span> Sujet
-              </span>
-              <span class="info-value"><strong>${cleanData.subject}</strong></span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">
-                <span>🕒</span> Date & Heure
-              </span>
-              <span class="info-value">${new Date(cleanData.timestamp).toLocaleString('fr-FR', { 
-                dateStyle: 'full', 
-                timeStyle: 'medium',
+          <h1 class="title">Nouveau message de contact</h1>
+          <p class="subtitle">Vous avez reçu une nouvelle demande via votre formulaire de contact</p>
+          
+          <table class="info-table">
+            <tr>
+              <td>De</td>
+              <td><strong>${cleanData.name}</strong></td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td><a href="mailto:${cleanData.email}" style="color: #1e464a; text-decoration: none;">${cleanData.email}</a></td>
+            </tr>
+            <tr>
+              <td>Sujet</td>
+              <td><strong>${cleanData.subject}</strong></td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>${new Date(cleanData.timestamp).toLocaleString('fr-FR', { 
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
                 timeZone: 'Africa/Kinshasa'
-              })}</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">
-                <span>🌐</span> Adresse IP
-              </span>
-              <span class="info-value">${clientIP || 'Non disponible'}</span>
-            </div>
+              })}</td>
+            </tr>
+            <tr>
+              <td>IP</td>
+              <td style="font-family: monospace; font-size: 13px;">${clientIP || 'N/A'}</td>
+            </tr>
+          </table>
+          
+          <div class="message-section">
+            <span class="message-label">Message</span>
+            <div class="message-content">${cleanData.message}</div>
           </div>
           
-          <!-- Message -->
-          <div class="message-container">
-            <h2 class="section-title">
-              <span>💬</span> Contenu du Message
-            </h2>
-            <div class="message-box">${cleanData.message}</div>
-          </div>
-          
-          <!-- Bouton d'action -->
-          <div style="text-align: center;">
-            <a href="mailto:${cleanData.email}?subject=Re: ${encodeURIComponent(cleanData.subject)}" class="action-button">
-              ✉️ Répondre au Contact
+          <div class="button-container">
+            <a href="mailto:${cleanData.email}?subject=Re: ${encodeURIComponent(cleanData.subject)}" class="button">
+              Répondre
             </a>
-          </div>
-          
-          <!-- Notice de sécurité -->
-          <div class="security-notice">
-            <div class="security-notice-title">
-              <span>✓</span> Transmission Sécurisée
-            </div>
-            <p class="security-notice-text">
-              Ce message a été transmis via un canal hautement sécurisé utilisant le chiffrement <strong>AES-256-GCM</strong> 
-              avec authentification <strong>HMAC-SHA256</strong>. L'intégrité et la confidentialité des données ont été vérifiées.
-            </p>
-          </div>
-          
-          <!-- Payload chiffré (pour audit) -->
-          <div class="encrypted-payload">
-            <div class="encrypted-payload-title">
-              🔐 Payload Chiffré (Audit & Traçabilité)
-            </div>
-            <div class="payload-preview">
-              ${encryptedPayload.substring(0, 140)}...
-            </div>
-            <p style="margin-top: 10px; font-size: 12px; color: #92400e;">
-              <em>Conservez cette empreinte pour la traçabilité et l'audit de sécurité.</em>
-            </p>
           </div>
           
         </div>
         
-        <!-- Footer E-QOS -->
         <div class="footer">
-          <p class="footer-title">E-QOS</p>
-          <p class="footer-tagline">Entreprise Qualifiée dans les Offres et Services</p>
           <p class="footer-text">
-            <strong>Wali</strong> · <strong>Wandi</strong> · <strong>Makiti</strong>
+            <strong>E-QOS</strong> – Révolution Digitale pour l'Afrique
           </p>
           <p class="footer-text">
-            Solutions Digitales Innovantes pour l'Afrique
+            Wali · Wandi · Makiti
           </p>
           <p class="footer-text" style="margin-top: 15px;">
-            Cet email a été généré automatiquement depuis le formulaire de contact sécurisé d'E-QOS.
+            <a href="https://www.e-qos.com" class="footer-link">www.e-qos.com</a>
           </p>
-          <p class="footer-warning">
-            ⚠️ Ne pas répondre à cet email automatique. Utilisez le bouton "Répondre au Contact" ci-dessus.
-          </p>
-          <div class="footer-website">
-            <a href="https://www.e-qos.com" class="footer-link">
-              🌐 www.e-qos.com
-            </a>
+          
+          <div class="footer-meta">
+            Cet email a été généré automatiquement. Ne pas répondre à cette adresse.
           </div>
         </div>
         
@@ -537,41 +353,57 @@ function generateEmailTemplate(
 }
 
 /**
+ * Version texte simple pour les clients email qui ne supportent pas HTML
+ */
+function generateTextVersion(
+  cleanData: ContactData,
+  clientIP: string | undefined
+): string {
+  return `
+E-QOS - NOUVEAU MESSAGE DE CONTACT
+═══════════════════════════════════════
+
+De: ${cleanData.name}
+Email: ${cleanData.email}
+Sujet: ${cleanData.subject}
+Date: ${new Date(cleanData.timestamp).toLocaleString('fr-FR', { timeZone: 'Africa/Kinshasa' })}
+IP: ${clientIP || 'N/A'}
+
+MESSAGE
+───────────────────────────────────────
+${cleanData.message}
+
+───────────────────────────────────────
+Pour répondre, envoyez un email à: ${cleanData.email}
+
+E-QOS – Révolution Digitale pour l'Afrique
+Wali · Wandi · Makiti
+www.e-qos.com
+  `.trim();
+}
+
+/**
  * Envoyer l'email sécurisé avec Resend
  */
-
 async function sendSecureEmail(
   cleanData: ContactData,
   encryptedPayload: string,
   clientIP: string | undefined
 ) {
-  const htmlContent = generateEmailTemplate(cleanData, encryptedPayload, clientIP);
-  
-  // Envoyer avec Resend
+  // Générer les templates (le chiffrement est déjà fait avant l'appel)
+  const htmlContent = generateEmailTemplate(cleanData, clientIP);
+  const textContent = generateTextVersion(cleanData, clientIP);
+
+  // Log du payload chiffré pour traçabilité (GARDÉ pour la sécurité)
+  console.log(`[CONTACT_ENCRYPTED] Payload sécurisé: ${encryptedPayload.substring(0, 50)}...`);
+
   const { data, error } = await resend.emails.send({
-    from: `E-QOS Contact <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
+    from: `E-QOS <${process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev'}>`,
     to: process.env.CONTACT_EMAIL || 'contact.eqos@gmail.com',
     replyTo: cleanData.email,
-    subject: `[E-QOS] ${cleanData.subject}`,
+    subject: `${cleanData.subject}`,
     html: htmlContent,
-    text: `
-Nouveau message de contact E-QOS
-
-De: ${cleanData.name} <${cleanData.email}>
-Sujet: ${cleanData.subject}
-Date: ${cleanData.timestamp}
-IP: ${clientIP}
-
-Message:
-${cleanData.message}
-
----
-Payload chiffré (AES-256-GCM + HMAC-SHA256):
-${encryptedPayload}
-
----
-Cet email a été généré automatiquement depuis le formulaire de contact sécurisé d'E-QOS.
-    `.trim()
+    text: textContent
   });
 
   if (error) {
@@ -613,7 +445,7 @@ router.post(
         timestamp: new Date().toISOString()
       });
 
-      // Chiffrement double (AES-256 + HMAC)
+      // ✅ CHIFFREMENT DOUBLE (AES-256 + HMAC) - GARDÉ POUR LA SÉCURITÉ
       const aesKey = process.env.CONTACT_FORM_SECRET || 'default-secret';
       const hmacSecret = process.env.HMAC_SECRET || process.env.CONTACT_FORM_SECRET || 'default-secret';
 
@@ -624,7 +456,7 @@ router.post(
         hmacSecret
       );
 
-      // Envoyer l'email sécurisé
+      // Envoyer l'email sécurisé (le payload chiffré est loggé dans sendSecureEmail)
       await sendSecureEmail(cleanData, encryptedPayload, clientIP);
 
       // Log de succès

@@ -237,10 +237,6 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
             <div className={styles.formHeader}>
               <h3>Démarrons la Conversation</h3>
               <p>Remplissez ce formulaire et nous vous recontacterons rapidement</p>
-              <div className={styles.securityBadge}>
-                <span className={styles.badgeIcon}>🔒</span>
-                <span>Communication sécurisée (AES-256 + HMAC)</span>
-              </div>
             </div>
 
             {submitStatus && (
