@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { navLinks } from '../../data/fakeData';
 import styles from './Header.module.css';
- import React from 'react';
+import React from 'react';
 interface HeaderProps {
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
 }
 
+const VALID_HREFS = new Set(['#accueil', '#apropos', '#applications', '#marche', '#equipe', '#partenaires', '#contact']);
+
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +25,18 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!VALID_HREFS.has(href)) return;
+
+    if (location.pathname === '/') {
+      // Déjà sur la page d'accueil : scroll direct
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Sur une page détail : navigue vers l'accueil avec l'ancre
+      // ScrollToHash dans App.tsx prendra le relais pour scroller
+      navigate('/' + href);
     }
   };
 

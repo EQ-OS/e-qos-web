@@ -1,6 +1,24 @@
 // App.tsx
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
+// Gère le scroll vers les ancres (#equipe, #applications…) après une navigation React Router
+const ScrollToHash: React.FC = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash, location.pathname]);
+  return null;
+};
 import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
 import Footer from './components/footer/Footer';
@@ -76,6 +94,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToHash />
       <div className="app">
         <Routes>
           {/* Page d'accueil */}

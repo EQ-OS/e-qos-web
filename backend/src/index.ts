@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 // ✅ AJOUT: Diagnostic des variables d'environnement
 console.log('=== ENV VARIABLES LOADED ===');
-console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? '***' + process.env.RESEND_API_KEY.slice(-8) : 'MISSING');
+console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? '***SET***' : 'MISSING');
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('PORT:', process.env.PORT);
 console.log('FRONTEND_URL:', process.env.FRONTEND_URL);

@@ -34,14 +34,27 @@ const Footer: React.FC = () => {
               <li><a href="#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('#contact'); }}>Contact</a></li>
             </ul>
           </div>
-          <div>
-            <h4>Réseaux</h4>
-            <ul>
-              <li><a href="#!" aria-label="LinkedIn">LinkedIn</a></li>
-              <li><a href="#!" aria-label="Twitter">Twitter</a></li>
-              <li><a href="#!" aria-label="Instagram">Instagram</a></li>
-            </ul>
-          </div>
+              <div>
+              <h4>Réseaux</h4>
+              <ul>
+                <li>
+                  <a href="https://www.linkedin.com/company/e-qos/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn de E-QOS Consulting">
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/eqosconsulting/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Facebook de EQOS Consulting">
+                    Facebook
+                  </a>
+                </li>
+              </ul>
+            </div>
         </div>
 
         <div className={styles.copyright}>

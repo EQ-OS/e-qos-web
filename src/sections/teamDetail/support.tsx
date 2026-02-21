@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/support.module.css';
 
 interface Member {
@@ -69,6 +69,7 @@ const equipeSupportData: TeamDetailData = {
 
 const Support: React.FC = () => {
   const team = equipeSupportData;
+  const navigate = useNavigate();
 
   // Scroll to top when component mounts
   React.useEffect(() => {
@@ -80,10 +81,10 @@ const Support: React.FC = () => {
       {/* Bouton retour */}
       <div className={styles.backButtonWrapper}>
         <div className="container">
-          <Link to="/#equipe" className={styles.backButton}>
+          <button onClick={() => navigate(-1)} className={styles.backButton}>
             <span className={styles.backArrow}>←</span>
             Retour aux équipes
-          </Link>
+          </button>
         </div>
       </div>
 

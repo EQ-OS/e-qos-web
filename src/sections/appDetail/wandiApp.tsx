@@ -1,6 +1,6 @@
 // src/sections/appDetail/wandiApp.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DownloadSection from '../../components/downloadSection/DownloadSection';
 import styles from '../../styles/appDetail.module.css';
 
@@ -104,6 +104,7 @@ const wandiAppData: AppDetailData = {
 
 const WandiApp: React.FC = () => {
   const app = wandiAppData;
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -114,10 +115,10 @@ const WandiApp: React.FC = () => {
       {/* Bouton retour */}
       <div className={styles.backButtonWrapper}>
         <div className="container">
-          <Link to="/#applications" className={styles.backButton}>
+          <button onClick={() => navigate(-1)} className={styles.backButton}>
             <span className={styles.backArrow}>←</span>
             Retour aux applications
-          </Link>
+          </button>
         </div>
       </div>
 

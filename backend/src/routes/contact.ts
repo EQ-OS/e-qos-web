@@ -409,8 +409,11 @@ router.post(
       });
 
       // ✅ CHIFFREMENT DOUBLE (AES-256 + HMAC) - GARDÉ POUR LA SÉCURITÉ
-      const aesKey = process.env.CONTACT_FORM_SECRET || 'default-secret';
-      const hmacSecret = process.env.HMAC_SECRET || process.env.CONTACT_FORM_SECRET || 'default-secret';
+      const aesKey = process.env.CONTACT_FORM_SECRET;
+      const hmacSecret = process.env.HMAC_SECRET || process.env.CONTACT_FORM_SECRET;
+      if (!aesKey || !hmacSecret) {
+        throw new Error('CONTACT_FORM_SECRET / HMAC_SECRET manquants — chiffrement impossible');
+      }
 
       const payloadJSON = JSON.stringify(cleanData);
       const encryptedPayload = EncryptionService.encryptDouble(

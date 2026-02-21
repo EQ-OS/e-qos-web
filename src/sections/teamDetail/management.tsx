@@ -1,6 +1,6 @@
 // src/sections/teamDetail/management.tsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/management.module.css';
 
 interface Member {
@@ -33,7 +33,7 @@ const directionGeneraleData: TeamDetailData = {
       id: 1,
       name: 'FOFANA Ayouba',
       position: 'CEO & Fondateur',
-      bio: 'Visionnaire passionné par l\'innovation énergétique en Afrique. Plus de 3 ans d\'expérience dans le secteur aéronautique. Ingénieur spécialisé en Qualification, Validation et Intégration de Systèmes, avec plus de deux ans d\'expérience dans des environnements industriels complexes, incluant des programmes majeurs chez Airbus et ATR. Compétent dans la gestion de projets multidisciplinaires, garantissant la conformité aux standards internationaux et optimisant les performances des systèmes. Reconnu pour son attention rigoureuse aux détails et ses solides compétences en collaboration et communication au sein des équipes techniques et opérationnelles.',
+      bio: 'Business Analyst et entrepreneur technologique. Expérience en environnements industriels complexes (aéronautique). Spécialisé dans l\'analyse des besoins, l\'optimisation des processus et le pilotage de projets à impact. Combine vision stratégique, rigueur méthodologique et orientation résultats pour créer des produits qui transforment les économies locales.',
       photo: '/images/e-qos-pruducts/ayouba.jpg',
       linkedin: 'https://www.linkedin.com/in/ayouba-fofana-306689156/',
       email: 'ayouba.fofana@e-qos.com'
@@ -42,7 +42,7 @@ const directionGeneraleData: TeamDetailData = {
       id: 2,
       name: 'Souleymane Faya Leno',
       position: 'CTO Backend Engineer & Co-Fondateur',
-      bio: 'Leader opérationnel avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact en Afrique et possède une solide expérience dans le développement backend et l\'architecture de systèmes complexes.',
+      bio: 'Leader opérationnel avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact au Canada et possède une solide expérience dans le développement backend et l\'architecture de systèmes complexes et le DevOps.',
       photo: '/images/e-qos-pruducts/leno.jpeg',
       linkedin: 'https://www.linkedin.com/in/souleymane-faya-leno-5b74a3171/',
       email: 'souleymane.leno@e-qos.com'
@@ -70,6 +70,7 @@ const directionGeneraleData: TeamDetailData = {
 
 const Management: React.FC = () => {
   const team = directionGeneraleData;
+  const navigate = useNavigate();
 
   // Scroll to top when component mounts
   React.useEffect(() => {
@@ -81,10 +82,10 @@ const Management: React.FC = () => {
       {/* Bouton retour */}
       <div className={styles.backButtonWrapper}>
         <div className="container">
-          <Link to="/#equipe" className={styles.backButton}>
+          <button onClick={() => navigate(-1)} className={styles.backButton}>
             <span className={styles.backArrow}>←</span>
             Retour aux équipes
-          </Link>
+          </button>
         </div>
       </div>
 

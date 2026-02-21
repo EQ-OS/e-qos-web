@@ -16,10 +16,19 @@ interface FormErrors {
   [key: string]: string;
 }
 
+// Messages d'erreur sûrs — ne jamais exposer les détails techniques à l'utilisateur
+const getSafeErrorMessage = (err: any): string => {
+  if (err?.name === 'AbortError') return 'Délai d\'attente dépassé. Veuillez réessayer.';
+  if (err?.message?.includes('Failed to fetch')) return 'Impossible de se connecter au serveur. Veuillez réessayer.';
+  if (err?.message?.includes('JSON')) return 'Réponse invalide du serveur. Veuillez réessayer.';
+  return 'Une erreur s\'est produite. Veuillez réessayer.';
+};
+
 const Contact: React.FC = () => {
   const formRef = useScrollAnimation<HTMLFormElement>();
   const businessRef = useScrollAnimation<HTMLDivElement>();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
   const [formState, setFormState] = useState<FormState>({
     name: '',
     email: '',
@@ -31,8 +40,7 @@ const Contact: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   // Configuration de l'API
-  //const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://e-qos-web-backend.onrender.com';
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'https://e-qos-web-backend.onrender.com';
 const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
 
   // Gérer l'affichage de la popup de confirmation
@@ -87,7 +95,7 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
       errors.subject = 'Veuillez sélectionner un sujet';
     }
 
-    if (formState.subject === 'autre' && formState.customSubject.trim().length < 3) {
+    if (formState.subject.toLowerCase() === 'autre' && formState.customSubject.trim().length < 3) {
       errors.customSubject = 'Veuillez préciser le sujet';
     }
 
@@ -134,22 +142,22 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
       return;
     }
 
+    // Anti-spam : délai minimum de 3 secondes entre deux envois
+    const now = Date.now();
+    if (now - lastSubmitTime < 3000) return;
+    setLastSubmitTime(now);
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
     try {
-      // Préparer les données à envoyer
       const submitData = {
         name: formState.name.trim(),
         email: formState.email.trim().toLowerCase(),
-        subject: formState.subject === 'autre' ? formState.customSubject : formState.subject,
+        subject: formState.subject.toLowerCase() === 'autre' ? formState.customSubject : formState.subject,
         message: formState.message.trim()
       };
 
-      console.log('📤 Envoi des données vers:', API_ENDPOINT);
-      console.log('📋 Données:', submitData);
-
-      // Envoyer avec timeout de sécurité
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000);
 
@@ -157,7 +165,8 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
         },
         credentials: 'include',
         signal: controller.signal,
@@ -166,21 +175,22 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
 
       clearTimeout(timeoutId);
 
-      console.log('📨 Réponse du serveur:', response.status);
+      // Valider le Content-Type de la réponse
+      const contentType = response.headers.get('content-type');
+      if (!contentType?.includes('application/json')) {
+        throw new Error('JSON');
+      }
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || errorData.message || `Erreur HTTP: ${response.status}`);
+        throw new Error(errorData.error || errorData.message || 'HTTP_ERROR');
       }
 
       const result = await response.json();
-      console.log('✅ Réponse succès:', result);
 
       if (result.success) {
-        setShowPopup(true); // Afficher le pop-up au lieu du message inline
-        setSubmitStatus(null); // Nettoyer le message inline
-        
-        // Réinitialiser le formulaire
+        setShowPopup(true);
+        setSubmitStatus(null);
         setFormState({
           name: '',
           email: '',
@@ -190,28 +200,17 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
         });
         setFormErrors({});
       } else {
-        throw new Error(result.error || result.message || 'Erreur lors de l\'envoi');
+        throw new Error(result.error || result.message || 'SEND_ERROR');
       }
 
     } catch (err: any) {
-      console.error('❌ Erreur d\'envoi:', err);
-
-      if (err.name === 'AbortError') {
-        setSubmitStatus({
-          type: 'error',
-          message: 'Délai d\'attente dépassé. Veuillez réessayer.'
-        });
-      } else if (err.message.includes('Failed to fetch')) {
-        setSubmitStatus({
-          type: 'error',
-          message: 'Impossible de se connecter au serveur. Vérifiez que le backend est en cours d\'exécution sur ' + BACKEND_URL
-        });
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: err.message || 'Une erreur s\'est produite. Veuillez réessayer.'
-        });
+      if (import.meta.env.DEV) {
+        console.error('Contact form error:', err);
       }
+      setSubmitStatus({
+        type: 'error',
+        message: getSafeErrorMessage(err)
+      });
     } finally {
       setIsSubmitting(false);
     }
