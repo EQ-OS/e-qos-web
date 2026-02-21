@@ -30,39 +30,39 @@ const equipeSupportData: TeamDetailData = {
   members: [
     {
       id: 1,
-      name: 'Mohammed Alami',
-      position: 'Head of Customer Support',
-      bio: '15 ans d\'expérience en service client. Expert en gestion d\'équipes support et amélioration des processus.',
-      photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'mohammed.alami@deqos.com'
+      name: 'FOFANA Ayouba',
+      position: 'CEO & Fondateur',
+      bio: 'Business Analyst et entrepreneur technologique. Expérience en environnements industriels complexes (aéronautique). Spécialisé dans l\'analyse des besoins, l\'optimisation des processus et le pilotage de projets à impact. Combine vision stratégique, rigueur méthodologique et orientation résultats pour créer des produits qui transforment les économies locales.',
+      photo: '/images/e-qos-pruducts/ayouba.jpg',
+      linkedin: 'https://www.linkedin.com/in/ayouba-fofana-306689156/',
+      email: 'ayouba.fofana@e-qos.com'
     },
     {
       id: 2,
-      name: 'Pierre Dubois',
-      position: 'Responsable Formation Client',
-      bio: 'Développe et anime les sessions de formation pour nos clients et partenaires.',
-      photo: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'pierre.dubois@deqos.com'
+      name: 'Souleymane Faya Leno',
+      position: 'CTO Backend Engineer & Co-Fondateur',
+      bio: 'Leader opérationnel avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact au Canada et possède une solide expérience dans le développement backend et l\'architecture de systèmes complexes et le DevOps.',
+      photo: '/images/e-qos-pruducts/leno.jpeg',
+      linkedin: 'https://www.linkedin.com/in/souleymane-faya-leno-5b74a3171/',
+      email: 'souleymane.leno@e-qos.com'
     },
     {
       id: 3,
-      name: 'Aminata Sow',
-      position: 'Support Multilingue',
-      bio: 'Parle couramment français, anglais, wolof et peul. Spécialiste du support pour l\'Afrique de l\'Ouest.',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'aminata.sow@deqos.com'
+      name: 'Diadié Traoré',
+      position: 'Lead Developer Backend',
+      bio: 'Expert en développement backend avec une passion pour les architectures évolutives et les technologies émergentes. Contribue activement à la construction de solutions robustes et performantes pour notre plateforme.',
+      photo: '/images/e-qos-pruducts/diadie.jpeg',
+      linkedin: 'https://www.linkedin.com/in/diadi%C3%A9-traor%C3%A9-b7278a18a/',
+      email: 'diadie.traore@e-qos.com'
     },
     {
       id: 4,
-      name: 'Thomas Müller',
-      position: 'Analyste Support',
-      bio: 'Analyse les données de support pour identifier les tendances et améliorer nos services.',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'thomas.muller@deqos.com'
+      name: 'Souleymane Kodjo',
+      position: 'Lead Developer Frontend',
+      bio: 'Ingénieur Logiciel et Cloud DevOps, spécialisé en Java/Spring Boot et architectures microservices sur AWS Cloud. Intervient sur la conception, la sécurisation et le déploiement automatisé d\'applications modernes avec Docker, Kubernetes et CI/CD.',
+      photo: '/images/e-qos-pruducts/kodjo.jpg',
+      linkedin: 'https://www.linkedin.com/in/souleymanekodjo/',
+      email: 'souleymane.kodjo@e-qos.com'
     }
   ]
 };

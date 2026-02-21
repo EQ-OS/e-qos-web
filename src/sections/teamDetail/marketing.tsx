@@ -30,41 +30,40 @@ const equipeMarketingData: TeamDetailData = {
   members: [
     {
       id: 1,
-      name: 'Fatoumata Diallo',
-      position: 'Chief Marketing Officer',
-      bio: '15 ans d\'expérience en marketing stratégique. Expert en développement de marque et stratégies de croissance sur les marchés africains.',
-      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'fatoumata.diallo@deqos.com'
+      name: 'FOFANA Ayouba',
+      position: 'CEO & Fondateur',
+      bio: 'Business Analyst et entrepreneur technologique. Expérience en environnements industriels complexes (aéronautique). Spécialisé dans l\'analyse des besoins, l\'optimisation des processus et le pilotage de projets à impact. Combine vision stratégique, rigueur méthodologique et orientation résultats pour créer des produits qui transforment les économies locales.',
+      photo: '/images/e-qos-pruducts/ayouba.jpg',
+      linkedin: 'https://www.linkedin.com/in/ayouba-fofana-306689156/',
+      email: 'ayouba.fofana@e-qos.com'
     },
     {
       id: 2,
-      name: 'Jean-Luc Martin',
-      position: 'Head of Digital Marketing',
-      bio: 'Spécialiste du marketing digital et des campagnes performance. Expert en SEO, SEA et analytics.',
-      photo: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'jeanluc.martin@deqos.com'
+      name: 'Souleymane Faya Leno',
+      position: 'CTO Backend Engineer & Co-Fondateur',
+      bio: 'Leader opérationnel avec une expertise en gestion de projets technologiques. A piloté plusieurs initiatives à fort impact au Canada et possède une solide expérience dans le développement backend et l\'architecture de systèmes complexes et le DevOps.',
+      photo: '/images/e-qos-pruducts/leno.jpeg',
+      linkedin: 'https://www.linkedin.com/in/souleymane-faya-leno-5b74a3171/',
+      email: 'souleymane.leno@e-qos.com'
     },
     {
       id: 3,
-      name: 'Aïcha Bello',
-      position: 'Content & Social Media Manager',
-      bio: 'Créatrice de contenu passionnée. Gère notre présence sur les réseaux sociaux et développe notre storytelling.',
-      photo: 'https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'aicha.bello@deqos.com'
+      name: 'Diadié Traoré',
+      position: 'Lead Developer Backend',
+      bio: 'Expert en développement backend avec une passion pour les architectures évolutives et les technologies émergentes. Contribue activement à la construction de solutions robustes et performantes pour notre plateforme.',
+      photo: '/images/e-qos-pruducts/diadie.jpeg',
+      linkedin: 'https://www.linkedin.com/in/diadi%C3%A9-traor%C3%A9-b7278a18a/',
+      email: 'diadie.traore@e-qos.com'
     },
     {
       id: 4,
-      name: 'Samuel Johnson',
-      position: 'Growth Marketing Specialist',
-      bio: 'Expert en acquisition utilisateurs et optimisation de funnel. Passionné par le marketing automation.',
-      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
-      linkedin: '#',
-      email: 'samuel.johnson@deqos.com'
+      name: 'Souleymane Kodjo',
+      position: 'Lead Developer Frontend',
+      bio: 'Ingénieur Logiciel et Cloud DevOps, spécialisé en Java/Spring Boot et architectures microservices sur AWS Cloud. Intervient sur la conception, la sécurisation et le déploiement automatisé d\'applications modernes avec Docker, Kubernetes et CI/CD.',
+      photo: '/images/e-qos-pruducts/kodjo.jpg',
+      linkedin: 'https://www.linkedin.com/in/souleymanekodjo/',
+      email: 'souleymane.kodjo@e-qos.com'
     }
-    // Ajoutez d'autres membres si nécessaire
   ]
 };
 
