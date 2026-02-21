@@ -1,5 +1,6 @@
 // market.tsx
 import React from 'react';
+import { FaRocket, FaUsers, FaSeedling, FaStore } from 'react-icons/fa';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import styles from '../styles/market.module.css';
 
@@ -48,28 +49,28 @@ const Market: React.FC = () => {
             </div>
             <ul className={styles.targetList}>
               <li>
-                <span className={styles.icon}>🚀</span>
+                <span className={styles.icon}><FaRocket /></span>
                 <div>
                   <strong>Jeunes entrepreneurs</strong>
                   <span>Porteurs d'innovation digitale</span>
                 </div>
               </li>
               <li>
-                <span className={styles.icon}>👨‍👩‍👧‍👦</span>
+                <span className={styles.icon}><FaUsers /></span>
                 <div>
                   <strong>Familles urbaines</strong>
                   <span>Consommateurs connectés</span>
                 </div>
               </li>
               <li>
-                <span className={styles.icon}>🌱</span>
+                <span className={styles.icon}><FaSeedling /></span>
                 <div>
                   <strong>Agriculteurs locaux</strong>
                   <span>Producteurs et fournisseurs</span>
                 </div>
               </li>
               <li>
-                <span className={styles.icon}>🏪</span>
+                <span className={styles.icon}><FaStore /></span>
                 <div>
                   <strong>PME & commerces</strong>
                   <span>Acteurs économiques locaux</span>

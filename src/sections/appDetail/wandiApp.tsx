@@ -1,13 +1,14 @@
 // src/sections/appDetail/wandiApp.tsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaCar, FaMoneyBillWave, FaShieldAlt, FaHandshake, FaChartBar, FaHeadset } from 'react-icons/fa';
 import DownloadSection from '../../components/downloadSection/DownloadSection';
 import styles from '../../styles/appDetail.module.css';
 
 interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 interface UsageStep {
@@ -39,32 +40,32 @@ const wandiAppData: AppDetailData = {
     {
       title: 'Réservation en Temps Réel',
       description: 'Reservez votre trajet en quelques secondes avec tracking en direct du véhicule.',
-      icon: '🚗'
+      icon: <FaCar />
     },
     {
       title: 'Prix Transparent',
       description: 'Tarification juste et transparente sans frais cachés, calculée en temps réel.',
-      icon: '💰'
+      icon: <FaMoneyBillWave />
     },
     {
       title: 'Sécurité Garantie',
       description: 'Vérification complète des conducteurs et partage de trajet pour plus de tranquillité.',
-      icon: '🛡️'
+      icon: <FaShieldAlt />
     },
     {
       title: 'Covoiturage',
       description: 'Réduisez les coûts et l\'impact environnemental en partageant les trajets avec d\'autres.',
-      icon: '🤝'
+      icon: <FaHandshake />
     },
     {
       title: 'Historique de Trajets',
       description: 'Consultez tous vos trajets, factures et estimations pour une meilleure gestion.',
-      icon: '📊'
+      icon: <FaChartBar />
     },
     {
-        title: 'Support 24/7',
-        description: 'Assistance client disponible à tout moment pour résoudre vos problèmes rapidement.',
-        icon: ''
+      title: 'Support 24/7',
+      description: 'Assistance client disponible à tout moment pour résoudre vos problèmes rapidement.',
+      icon: <FaHeadset />
     }
   ],
   usageSteps: [
@@ -213,7 +214,7 @@ const WandiApp: React.FC = () => {
         appName="Wandi"
         playStoreLink="https://play.google.com/store"
         appStoreLink="https://apps.apple.com"
-        emoji="🚗"
+        icon={<FaCar />}
       />
 
       {/* CTA Section */}

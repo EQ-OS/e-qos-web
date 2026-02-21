@@ -1,5 +1,6 @@
 // sections/contact.tsx
 import { useState } from 'react';
+import { FaRocket, FaGlobe, FaBriefcase, FaChartLine, FaLightbulb, FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import styles from '../styles/contact.module.css';
 import React from 'react';
@@ -57,22 +58,22 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
 
   const businessFeatures = [
     {
-      icon: '🚀',
+      icon: <FaRocket />,
       title: 'Innovation Technologique',
       description: 'Solutions digitales sur mesure adaptées aux réalités du marché africain'
     },
     {
-      icon: '🌍',
+      icon: <FaGlobe />,
       title: 'Impact Panafricain',
       description: 'Déploiement multi-pays avec une approche locale et contextualisée'
     },
     {
-      icon: '💼',
+      icon: <FaBriefcase />,
       title: 'Modèle Économique Durable',
       description: 'Revenue streams diversifiés et stratégie de croissance rentable'
     },
     {
-      icon: '📈',
+      icon: <FaChartLine />,
       title: 'Croissance Exponentielle',
       description: '+50K utilisateurs potentiels dès la première année de déploiement'
     }
@@ -241,7 +242,7 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
             {submitStatus && (
               <div className={`${styles.statusMessage} ${styles[submitStatus.type]}`}>
                 <span className={styles.statusIcon}>
-                  {submitStatus.type === 'success' ? '✓' : '⚠'}
+                  {submitStatus.type === 'success' ? <FaCheckCircle /> : <FaExclamationTriangle />}
                 </span>
                 <span>{submitStatus.message}</span>
               </div>
@@ -399,7 +400,7 @@ const API_ENDPOINT = `${BACKEND_URL}/api/contact/send`;
             </div>
 
             <div className={styles.investmentNote}>
-              <div className={styles.noteIcon}>💡</div>
+              <div className={styles.noteIcon}><FaLightbulb /></div>
               <div>
                 <strong>Opportunité Stratégique</strong>
                 <span>Rejoignez-nous dans cette aventure entrepreneuriale au cœur de la croissance africaine</span>

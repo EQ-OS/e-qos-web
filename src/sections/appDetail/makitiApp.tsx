@@ -1,13 +1,14 @@
 // src/sections/appDetail/makitiApp.tsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaSeedling, FaLeaf, FaBalanceScale, FaStar, FaShoppingCart, FaBook } from 'react-icons/fa';
 import DownloadSection from '../../components/downloadSection/DownloadSection';
 import styles from '../../styles/appDetail.module.css';
 
 interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 interface UsageStep {
@@ -39,32 +40,32 @@ const makitiAppData: AppDetailData = {
     {
       title: 'Producteurs Vérifiés',
       description: 'Achetez directement auprès de producteurs locaux vérifiés et traçables.',
-      icon: '🌾'
+      icon: <FaSeedling />
     },
     {
       title: 'Fraîcheur Garantie',
       description: 'Produits frais livrés en moins de 24h directement du producteur à votre porte.',
-      icon: '🥬'
+      icon: <FaLeaf />
     },
     {
       title: 'Prix Justes',
       description: 'Tarifs équitables sans intermédiaires inutiles, bénéfiques pour tous.',
-      icon: '💚'
+      icon: <FaBalanceScale />
     },
     {
       title: 'Notation des Producteurs',
       description: 'Notez et laissez des avis pour aider la communauté à choisir les meilleurs producteurs.',
-      icon: '🔗'
+      icon: <FaStar />
     },
     {
       title: 'Paniers Personnalisés',
       description: 'Créez des paniers sur mesure selon vos préférences et besoins nutritionnels.',
-      icon: '🛒'
+      icon: <FaShoppingCart />
     },
     {
       title: 'Conseil Nutrition',
       description: 'Accédez à des conseils nutritionnels personnalisés pour une alimentation saine.',
-      icon: '📚'
+      icon: <FaBook />
     }
   ],
   usageSteps: [
@@ -213,7 +214,7 @@ const MakitiApp: React.FC = () => {
         appName="Makiti"
         playStoreLink="https://play.google.com/store"
         appStoreLink="https://apps.apple.com"
-        emoji="🥬"
+        icon={<FaLeaf />}
       />
 
       {/* CTA Section */}
