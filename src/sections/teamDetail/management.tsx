@@ -60,7 +60,7 @@ const directionGeneraleData: TeamDetailData = {
       id: 4,
       name: 'Souleymane Kodjo',
       position: 'Lead Developer Frontend',
-      bio: 'Ingénieur Logiciel et Cloud DevOps, spécialisé en Java/Spring Boot et architectures microservices sur AWS Cloud. Intervient sur la conception, la sécurisation et le déploiement automatisé d\'applications modernes avec Docker, Kubernetes et CI/CD. Expérience couvrant également la FinTech et la Blockchain, avec le développement de solutions de paiement digital et d\'intégration KYC/AML. Combine rigueur technique, automatisation et innovation continue pour garantir performance et fiabilité des systèmes.',
+      bio: 'Ingénieur Logiciel et Cloud DevOps, spécialisé en Java/Spring Boot et architectures microservices sur AWS Cloud. Intervient sur la conception, la sécurisation et le déploiement automatisé d\'applications modernes avec Docker, Kubernetes et CI/CD.',
       photo: '/images/e-qos-pruducts/kodjo.jpg',
       linkedin: 'https://www.linkedin.com/in/souleymanekodjo/',
       email: 'souleymane.kodjo@e-qos.com'

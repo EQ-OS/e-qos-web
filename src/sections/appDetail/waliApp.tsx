@@ -1,13 +1,22 @@
 // src/sections/appDetail/waliApp.tsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { 
+  FaClock, 
+  FaRocket, 
+  FaBullseye, 
+  FaHandshake, 
+  FaCreditCard, 
+  FaStar,
+  FaBriefcase 
+} from 'react-icons/fa';
 import DownloadSection from '../../components/downloadSection/DownloadSection';
 import styles from '../../styles/appDetail.module.css';
 
 interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 interface UsageStep {
@@ -23,6 +32,7 @@ interface AppDetailData {
   fullDescription: string;
   mission: string;
   heroImage: string;
+  appScreenshot: string;
   mainFeatures: Feature[];
   usageSteps: UsageStep[];
   stats: Array<{ label: string; value: string }>;
@@ -32,39 +42,40 @@ const waliAppData: AppDetailData = {
   appName: 'Wali',
   appTag: 'Missions',
   tagline: 'Plongez vous dans l\'instant de liberté que vous méritez.',
-  fullDescription: 'Wali est une application dédiée à la mise en relation de prestataires de services et de clients via une plateforme mobile. Elle met en connexion entreprises, talents et particuliers pour proposer une large gamme de services : livraison de produits, nettoyage à domicile, cours particuliers, services profionnels et bien plus encore.',
+  fullDescription: 'Wali est une application dédiée à la mise en relation de prestataires de services et de clients via une plateforme mobile. Elle met en connexion entreprises, talents et particuliers pour proposer une large gamme de services : livraison de produits, nettoyage à domicile, cours particuliers, services professionnels et bien plus encore.',
   mission: 'Simplifier la vie quotidienne des Africains grâce à la technologie. Wali casse les barrières du CV et de l\'expérience traditionnels en permettant à chacun de réaliser les missions qu\'il désire. Que vous soyez entreprise, professionnel ou particulier, vous pouvez poster une mission ou en accepter une instantanément, dynamisant ainsi l\'économie locale africaine.',
   heroImage: '/images/e-qos-pruducts/wali-background.jpg',
+  appScreenshot: '/images/e-qos-pruducts/Wali_home_page.jpg',
   mainFeatures: [
     {
       title: 'Flexibilité Totale',
       description: 'Acceptez des missions quand vous le souhaitez, sans engagement à long terme. Liberté de choisir vos horaires et vos projets.',
-      icon: '⏰'
+      icon: <FaClock />
     },
     {
       title: 'Pas de Barrière CV',
       description: 'Cassez les limites du diplôme et de l\'expérience. Chacun peut réaliser une mission s\'il en a les compétences.',
-      icon: '🚀'
+      icon: <FaRocket />
     },
     {
       title: 'Large Gamme de Services',
       description: 'Livraison, nettoyage, cours particuliers, services professionnels et bien d\'autres. Des missions pour tous les talents.',
-      icon: '🎯'
+      icon: <FaBullseye />
     },
     {
       title: 'Communauté Ouverte',
       description: 'Entreprises, talents et particuliers connectés sur une même plateforme. Chacun peut poster et accepter des missions.',
-      icon: '🤝'
+      icon: <FaHandshake />
     },
     {
       title: 'Paiement Sécurisé',
       description: 'Transactions protégées et paiements instantanés après validation de la mission. Votre tranquillité d\'esprit garantie.',
-      icon: '💳'
+      icon: <FaCreditCard />
     },
     {
       title: 'Évaluation & Confiance',
       description: 'Système d\'évaluation transparent pour construire votre réputation et votre crédibilité sur la plateforme.',
-      icon: '⭐'
+      icon: <FaStar />
     }
   ],
   usageSteps: [
@@ -139,12 +150,24 @@ const WaliApp: React.FC = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Mission Section avec Screenshot */}
       <section className={styles.missionSection}>
         <div className="container">
-          <div className={styles.missionCard}>
-            <h2>Notre Vision</h2>
-            <p>{app.mission}</p>
+          <div className={styles.missionWithScreenshot}>
+            <div className={styles.missionCard}>
+              <h2>Notre Vision</h2>
+              <p>{app.mission}</p>
+            </div>
+            
+            {/* Cadre téléphone avec screenshot */}
+            <div className={styles.phoneFrame}>
+              <div className={styles.phoneNotch}></div>
+              <img 
+                src={app.appScreenshot} 
+                alt="Wali App Home Page"
+                className={styles.phoneScreenshot}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -213,7 +236,7 @@ const WaliApp: React.FC = () => {
         appName="Wali"
         playStoreLink="https://play.google.com/store"
         appStoreLink="https://apps.apple.com"
-        emoji="💼"
+        icon={<FaBriefcase/>}  
       />
 
       {/* CTA Section */}
